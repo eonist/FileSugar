@@ -1,15 +1,15 @@
 import Foundation
 
 public class FileModifier{
-	/**
-	 * PARAM: fromURL: "/path/to/old"
-	 * PARAM: toURL: "/path/to/new"
-	 * TODO: additional catch clauses:
-     * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
-     * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
-     * IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
-     * IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
-	 */
+   /**
+    * PARAM: fromURL: "/path/to/old"
+    * PARAM: toURL: "/path/to/new"
+    * TODO: additional catch clauses:
+    * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
+    * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
+    * IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
+    */
 	public static func move(_ fromURL:String, toURL:String) {
 		let fileManager = FileManager.default
         let fromURL:URL = URL(fileURLWithPath: fromURL)
