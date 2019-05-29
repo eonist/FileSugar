@@ -7,9 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DF43467229E9A9E00996EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF43466229E9A9E00996EE7 /* AppDelegate.swift */; };
+		9DF43469229E9A9F00996EE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF43468229E9A9F00996EE7 /* Assets.xcassets */; };
+		9DF4346C229E9A9F00996EE7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4346A229E9A9F00996EE7 /* MainMenu.xib */; };
+		9DF43473229E9B3F00996EE7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF43472229E9B3F00996EE7 /* View.swift */; };
+		9DF4347D229E9BD100996EE7 /* FileSugar_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 9DF4347B229E9BD100996EE7 /* FileSugar_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9DF43480229E9BD100996EE7 /* FileSugar_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF43479229E9BD100996EE7 /* FileSugar_macOS.framework */; };
+		9DF43481229E9BD100996EE7 /* FileSugar_macOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF43479229E9BD100996EE7 /* FileSugar_macOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9DF43486229E9BE000996EE7 /* FileParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63721B4192200A0D3D4 /* FileParser.swift */; };
+		9DF43487229E9BE000996EE7 /* FileAsserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63821B4192200A0D3D4 /* FileAsserter.swift */; };
+		9DF43488229E9BE000996EE7 /* FilePathModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63A21B4192200A0D3D4 /* FilePathModifier.swift */; };
+		9DF43489229E9BE000996EE7 /* FilePathParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63B21B4192200A0D3D4 /* FilePathParser.swift */; };
+		9DF4348A229E9BE000996EE7 /* FilePathAsserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63C21B4192200A0D3D4 /* FilePathAsserter.swift */; };
+		9DF4348B229E9BE000996EE7 /* FileModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63D21B4192200A0D3D4 /* FileModifier.swift */; };
+		9DF4348C229E9BE000996EE7 /* FileUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED63E21B4192200A0D3D4 /* FileUtils.swift */; };
 		F1BED61321B4182B00A0D3D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED61221B4182B00A0D3D4 /* AppDelegate.swift */; };
-		F1BED61521B4182B00A0D3D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED61421B4182B00A0D3D4 /* ViewController.swift */; };
-		F1BED61821B4182B00A0D3D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BED61621B4182B00A0D3D4 /* Main.storyboard */; };
+		F1BED61521B4182B00A0D3D4 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BED61421B4182B00A0D3D4 /* MainVC.swift */; };
 		F1BED61A21B4182D00A0D3D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1BED61921B4182D00A0D3D4 /* Assets.xcassets */; };
 		F1BED61D21B4182D00A0D3D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1BED61B21B4182D00A0D3D4 /* LaunchScreen.storyboard */; };
 		F1BED62D21B418BE00A0D3D4 /* FileSugar.h in Headers */ = {isa = PBXBuildFile; fileRef = F1BED62B21B418BE00A0D3D4 /* FileSugar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		9DF4347E229E9BD100996EE7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1BED60721B4182B00A0D3D4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9DF43478229E9BD100996EE7;
+			remoteInfo = "FileSugar-macOS";
+		};
 		F1BED62E21B418BE00A0D3D4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F1BED60721B4182B00A0D3D4 /* Project object */;
@@ -43,6 +63,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		9DF43485229E9BD100996EE7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9DF43481229E9BD100996EE7 /* FileSugar_macOS.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1BED63521B418BE00A0D3D4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,10 +88,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9DF43464229E9A9E00996EE7 /* FileSugarExampleMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileSugarExampleMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF43466229E9A9E00996EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9DF43468229E9A9F00996EE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9DF4346B229E9A9F00996EE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9DF4346D229E9A9F00996EE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9DF4346E229E9A9F00996EE7 /* FileSugarExampleMacOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FileSugarExampleMacOS.entitlements; sourceTree = "<group>"; };
+		9DF43472229E9B3F00996EE7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		9DF43479229E9BD100996EE7 /* FileSugar_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FileSugar_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF4347B229E9BD100996EE7 /* FileSugar_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileSugar_macOS.h; sourceTree = "<group>"; };
+		9DF4347C229E9BD100996EE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1BED60F21B4182B00A0D3D4 /* FileSugarExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileSugarExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BED61221B4182B00A0D3D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F1BED61421B4182B00A0D3D4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F1BED61721B4182B00A0D3D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F1BED61421B4182B00A0D3D4 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		F1BED61921B4182D00A0D3D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1BED61C21B4182D00A0D3D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1BED61E21B4182D00A0D3D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +120,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		9DF43461229E9A9E00996EE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF43480229E9BD100996EE7 /* FileSugar_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF43476229E9BD100996EE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1BED60C21B4182B00A0D3D4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -105,12 +160,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DF43465229E9A9E00996EE7 /* FileSugarExampleMacOS */ = {
+			isa = PBXGroup;
+			children = (
+				9DF43466229E9A9E00996EE7 /* AppDelegate.swift */,
+				9DF43472229E9B3F00996EE7 /* View.swift */,
+				9DF43468229E9A9F00996EE7 /* Assets.xcassets */,
+				9DF4346A229E9A9F00996EE7 /* MainMenu.xib */,
+				9DF4346D229E9A9F00996EE7 /* Info.plist */,
+				9DF4346E229E9A9F00996EE7 /* FileSugarExampleMacOS.entitlements */,
+			);
+			path = FileSugarExampleMacOS;
+			sourceTree = "<group>";
+		};
+		9DF4347A229E9BD100996EE7 /* FileSugar-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				9DF4347B229E9BD100996EE7 /* FileSugar_macOS.h */,
+				9DF4347C229E9BD100996EE7 /* Info.plist */,
+			);
+			path = "FileSugar-macOS";
+			sourceTree = "<group>";
+		};
 		F1BED60621B4182B00A0D3D4 = {
 			isa = PBXGroup;
 			children = (
 				F1BED61121B4182B00A0D3D4 /* FileSugarExample */,
 				F1BED62A21B418BE00A0D3D4 /* FileSugar */,
 				F1BED64B21B41A5D00A0D3D4 /* FileSugarTests */,
+				9DF43465229E9A9E00996EE7 /* FileSugarExampleMacOS */,
+				9DF4347A229E9BD100996EE7 /* FileSugar-macOS */,
 				F1BED61021B4182B00A0D3D4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +200,8 @@
 				F1BED60F21B4182B00A0D3D4 /* FileSugarExample.app */,
 				F1BED62921B418BE00A0D3D4 /* FileSugar.framework */,
 				F1BED64A21B41A5D00A0D3D4 /* FileSugarTests.xctest */,
+				9DF43464229E9A9E00996EE7 /* FileSugarExampleMacOS.app */,
+				9DF43479229E9BD100996EE7 /* FileSugar_macOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -129,8 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				F1BED61221B4182B00A0D3D4 /* AppDelegate.swift */,
-				F1BED61421B4182B00A0D3D4 /* ViewController.swift */,
-				F1BED61621B4182B00A0D3D4 /* Main.storyboard */,
+				F1BED61421B4182B00A0D3D4 /* MainVC.swift */,
 				F1BED61921B4182D00A0D3D4 /* Assets.xcassets */,
 				F1BED61B21B4182D00A0D3D4 /* LaunchScreen.storyboard */,
 				F1BED61E21B4182D00A0D3D4 /* Info.plist */,
@@ -182,6 +262,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		9DF43474229E9BD100996EE7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF4347D229E9BD100996EE7 /* FileSugar_macOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1BED62421B418BE00A0D3D4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +281,45 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		9DF43463229E9A9E00996EE7 /* FileSugarExampleMacOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF43471229E9A9F00996EE7 /* Build configuration list for PBXNativeTarget "FileSugarExampleMacOS" */;
+			buildPhases = (
+				9DF43460229E9A9E00996EE7 /* Sources */,
+				9DF43461229E9A9E00996EE7 /* Frameworks */,
+				9DF43462229E9A9E00996EE7 /* Resources */,
+				9DF43485229E9BD100996EE7 /* Embed Frameworks */,
+				9DF4348D229EA34000996EE7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9DF4347F229E9BD100996EE7 /* PBXTargetDependency */,
+			);
+			name = FileSugarExampleMacOS;
+			productName = FileSugarExampleMacOS;
+			productReference = 9DF43464229E9A9E00996EE7 /* FileSugarExampleMacOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9DF43478229E9BD100996EE7 /* FileSugar-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9DF43482229E9BD100996EE7 /* Build configuration list for PBXNativeTarget "FileSugar-macOS" */;
+			buildPhases = (
+				9DF43474229E9BD100996EE7 /* Headers */,
+				9DF43475229E9BD100996EE7 /* Sources */,
+				9DF43476229E9BD100996EE7 /* Frameworks */,
+				9DF43477229E9BD100996EE7 /* Resources */,
+				9DF4348E229EA34700996EE7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "FileSugar-macOS";
+			productName = "FileSugar-macOS";
+			productReference = 9DF43479229E9BD100996EE7 /* FileSugar_macOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		F1BED60E21B4182B00A0D3D4 /* FileSugarExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1BED62121B4182D00A0D3D4 /* Build configuration list for PBXNativeTarget "FileSugarExample" */;
@@ -256,10 +383,16 @@
 		F1BED60721B4182B00A0D3D4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = FutureLab;
 				TargetAttributes = {
+					9DF43463229E9A9E00996EE7 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					9DF43478229E9BD100996EE7 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
 					F1BED60E21B4182B00A0D3D4 = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -289,18 +422,35 @@
 				F1BED60E21B4182B00A0D3D4 /* FileSugarExample */,
 				F1BED62821B418BE00A0D3D4 /* FileSugar */,
 				F1BED64921B41A5D00A0D3D4 /* FileSugarTests */,
+				9DF43463229E9A9E00996EE7 /* FileSugarExampleMacOS */,
+				9DF43478229E9BD100996EE7 /* FileSugar-macOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		9DF43462229E9A9E00996EE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF43469229E9A9F00996EE7 /* Assets.xcassets in Resources */,
+				9DF4346C229E9A9F00996EE7 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF43477229E9BD100996EE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1BED60D21B4182B00A0D3D4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F1BED61D21B4182D00A0D3D4 /* LaunchScreen.storyboard in Resources */,
 				F1BED61A21B4182D00A0D3D4 /* Assets.xcassets in Resources */,
-				F1BED61821B4182B00A0D3D4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +471,40 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		9DF4348D229EA34000996EE7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		9DF4348E229EA34700996EE7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		F1CE268422854AEB00441836 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,11 +542,34 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		9DF43460229E9A9E00996EE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF43473229E9B3F00996EE7 /* View.swift in Sources */,
+				9DF43467229E9A9E00996EE7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9DF43475229E9BD100996EE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9DF4348B229E9BE000996EE7 /* FileModifier.swift in Sources */,
+				9DF43487229E9BE000996EE7 /* FileAsserter.swift in Sources */,
+				9DF43489229E9BE000996EE7 /* FilePathParser.swift in Sources */,
+				9DF4348A229E9BE000996EE7 /* FilePathAsserter.swift in Sources */,
+				9DF43488229E9BE000996EE7 /* FilePathModifier.swift in Sources */,
+				9DF4348C229E9BE000996EE7 /* FileUtils.swift in Sources */,
+				9DF43486229E9BE000996EE7 /* FileParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F1BED60B21B4182B00A0D3D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1BED61521B4182B00A0D3D4 /* ViewController.swift in Sources */,
+				F1BED61521B4182B00A0D3D4 /* MainVC.swift in Sources */,
 				F1BED61321B4182B00A0D3D4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,6 +599,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		9DF4347F229E9BD100996EE7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9DF43478229E9BD100996EE7 /* FileSugar-macOS */;
+			targetProxy = 9DF4347E229E9BD100996EE7 /* PBXContainerItemProxy */;
+		};
 		F1BED62F21B418BE00A0D3D4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F1BED62821B418BE00A0D3D4 /* FileSugar */;
@@ -405,12 +617,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		F1BED61621B4182B00A0D3D4 /* Main.storyboard */ = {
+		9DF4346A229E9A9F00996EE7 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				F1BED61721B4182B00A0D3D4 /* Base */,
+				9DF4346B229E9A9F00996EE7 /* Base */,
 			);
-			name = Main.storyboard;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		F1BED61B21B4182D00A0D3D4 /* LaunchScreen.storyboard */ = {
@@ -424,6 +636,114 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		9DF4346F229E9A9F00996EE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FileSugarExampleMacOS/FileSugarExampleMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TXKCF76Y2G;
+				INFOPLIST_FILE = FileSugarExampleMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.eon.FileSugarExampleMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		9DF43470229E9A9F00996EE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = FileSugarExampleMacOS/FileSugarExampleMacOS.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = TXKCF76Y2G;
+				INFOPLIST_FILE = FileSugarExampleMacOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = codes.eon.FileSugarExampleMacOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		9DF43483229E9BD100996EE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TXKCF76Y2G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "FileSugar-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "codes.eon.FileSugar-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9DF43484229E9BD100996EE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = TXKCF76Y2G;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "FileSugar-macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = "codes.eon.FileSugar-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		F1BED61F21B4182D00A0D3D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -671,6 +991,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		9DF43471229E9A9F00996EE7 /* Build configuration list for PBXNativeTarget "FileSugarExampleMacOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF4346F229E9A9F00996EE7 /* Debug */,
+				9DF43470229E9A9F00996EE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9DF43482229E9BD100996EE7 /* Build configuration list for PBXNativeTarget "FileSugar-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9DF43483229E9BD100996EE7 /* Debug */,
+				9DF43484229E9BD100996EE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F1BED60A21B4182B00A0D3D4 /* Build configuration list for PBXProject "FileSugarExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

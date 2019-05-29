@@ -7,17 +7,20 @@ public class FilePathAsserter {
     public static func isAbsolute(_ path: String, pathSeperator: String = "/") -> Bool {
         return path.hasPrefix(pathSeperator)
     }
-    public static func isBacklash(_ path: String) -> Bool {//the name is not great, improve later
+    /**
+     * Fixme: ⚠️️ the name is not great, improve later, rename to atleast hasBacklash
+     */
+    public static func isBacklash(_ path: String) -> Bool {
         return path.hasPrefix("../")
     }
     /**
-     * New, naive approche
+     * - Remark: naive approche
      */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {
-        return path.hasPrefix(pathSeperator) || path.hasPrefix(".."+pathSeperator)
+        return path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
     }
     /**
-     * New
+     * Asserts if a path is a type of tilde path
      */
     public static func isTildePath(_ path: String) -> Bool {
         return path.hasPrefix("~")
