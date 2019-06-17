@@ -2,6 +2,17 @@ import Foundation
 
 public class FileParser {
     /**
+     * Data for URL
+     */
+    func data(url: URL) -> Data? {
+        do {
+            let content: Data = try Data.init(contentsOf: url)
+            return content
+        } catch {
+            return nil
+        }
+    }
+    /**
      * Returns string content from a file at file location "path"
      * - Parameter path: is the file path to the file in this format: (User/John/Desktop/test.txt) aka absolute
      * - Important: ⚠️️ Remember to expand the path with the .tildePath call, if it's a tilde path
