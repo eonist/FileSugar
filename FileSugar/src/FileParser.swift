@@ -4,7 +4,7 @@ public class FileParser {
     /**
      * Data for URL
      */
-    func data(url: URL) -> Data? {
+    public static func data(url: URL) -> Data? {
         do {
             let content: Data = try Data.init(contentsOf: url)
             return content
