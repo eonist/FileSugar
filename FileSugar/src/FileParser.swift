@@ -6,7 +6,7 @@ public class FileParser {
      */
     public static func data(url: URL) -> Data? {
         do {
-            let content: Data = try Data.init(contentsOf: url)
+            let content: Data = try .init(contentsOf: url)
             return content
         } catch {
             return nil
