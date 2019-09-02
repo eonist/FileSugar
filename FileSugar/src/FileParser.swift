@@ -39,7 +39,7 @@ public class FileParser {
     */
    public static func content(filePath path: String, encoding: String.Encoding = .utf8) -> String? {
       do {
-         let content: String = try String.init(contentsOfFile: path, encoding: encoding)
+         let content: String = try .init(contentsOfFile: path, encoding: encoding)
          return content
       } catch  let error as NSError {
          Swift.print("Error: \(error)")
@@ -138,4 +138,3 @@ extension FileParser {
    }
 }
 #endif
-
