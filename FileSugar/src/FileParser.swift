@@ -24,11 +24,12 @@ public class FileParser {
      * ## Examples:
      * FileParser.content(dirPath: NSString(string: "~/Desktop/temp.txt").expandingTildeInPath)
      */
-    public static func content(filePath path: String) -> String? {
+   public static func content(filePath path: String, encoding: String.Encoding = .utf8) -> String? {
         do {
-            let content: String = try String(contentsOfFile: path, encoding: .utf8)
+            let content: String = try String.init(contentsOfFile: path, encoding: encoding)
             return content
-        } catch {
+        } catch  let error as NSError {
+            Swift.print("Error: \(error)")
             return nil
         }
     }

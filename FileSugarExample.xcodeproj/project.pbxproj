@@ -88,6 +88,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D1A3B6A231D0E88009E2B77 /* FileSugar_macOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileSugar_macOS.framework; path = ../JSONSugar/Carthage/Build/Mac/FileSugar_macOS.framework; sourceTree = "<group>"; };
 		9DF43464229E9A9E00996EE7 /* FileSugarExampleMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileSugarExampleMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF43466229E9A9E00996EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DF43468229E9A9F00996EE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -160,6 +161,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D1A3B69231D0E87009E2B77 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9D1A3B6A231D0E88009E2B77 /* FileSugar_macOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9DF43465229E9A9E00996EE7 /* FileSugarExampleMacOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +200,7 @@
 				9DF43465229E9A9E00996EE7 /* FileSugarExampleMacOS */,
 				9DF4347A229E9BD100996EE7 /* FileSugar-macOS */,
 				F1BED61021B4182B00A0D3D4 /* Products */,
+				9D1A3B69231D0E87009E2B77 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
