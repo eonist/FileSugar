@@ -54,8 +54,7 @@ public class FileParser {
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
       if let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) {
          return content(filePath: filepath)
-      } else let error as NSError {
-         Swift.print("Error: \(error)")
+      } else {
          return nil // example.txt not found!
       }
    }
