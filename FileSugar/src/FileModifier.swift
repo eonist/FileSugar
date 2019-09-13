@@ -2,13 +2,13 @@ import Foundation
 
 public class FileModifier {
    /**
-    * - PARAM: fromURL: "/path/to/old"
-    * - PARAM: toURL: "/path/to/new"
+    * - Parameter: fromURL: Ie: "/path/to/old"
+    * - Parameter: toURL: Ie: "/path/to/new"
     * - Fixme: additional catch clauses:
     * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
     * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
-    * - IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
-    * - IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
+    * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * - Important: ⚠️️ the toURL needs to have the name of the file as well.
     */
    public static func move(_ fromURL: String, toURL: String) {
       let fileManager = FileManager.default
@@ -22,8 +22,8 @@ public class FileModifier {
    }
    /**
     * Copies a file to another location
-    * IMPORTANT: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
-    * IMPORTANT: ⚠️️ the toURL needs to have the name of the file as well.
+    * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * - Important: ⚠️️ the toURL needs to have the name of the file as well.
     */
    public static func copy(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
@@ -39,12 +39,13 @@ public class FileModifier {
       }
    }
    /**
-    * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
-    * NOTE: this method over-writes data to files that already exists as well
-    * NOTE: this method creates a new file if non exists before
+    * write string to path
+    * - Examples:
+    * FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
+    * - Note: this method over-writes data to files that already exists as well
+    * - Note: this method creates a new file if non exists before
     */
    public static func write(_ path: String, content: String) -> Bool {
-      //        Swift.print("FileModifier.write")
       do {
          try content.write(toFile: path, atomically: true, encoding: .utf8)
          return true
@@ -54,7 +55,9 @@ public class FileModifier {
       }
    }
    /**
-    * EXAMPLE: FileModifier.write("~/Desktop/del.txt".tildePath, data)//returns true or false depending on if something was written or not
+    * Write data to path
+    * - Examples:
+    * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     */
    public static func write(path: String, data: Data) -> Bool {
       do {
@@ -66,8 +69,10 @@ public class FileModifier {
       }
    }
    /**
-    * ## EXAMPLES: FileModifier.createDir("~/Desktop/temp/".tildePath)//returns true or false depending on if something was created or not
-    * - NOTE: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
+    * Create a directory at a path
+    * ## Examples:
+    * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
+    * - Note: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     */
    public static func createDir(path: String) -> Bool {
       do {
@@ -79,7 +84,7 @@ public class FileModifier {
       }
    }
    /**
-    * Deletes a file at PARAM: path
+    * Deletes a file at a speccific path
     */
    public static func delete(_ path: String) -> Bool {
       let fileManager = FileManager.default
@@ -94,6 +99,7 @@ public class FileModifier {
    }
    /**
     * Renames a file
+    * - Fixme: ⚠️️ Write example
     */
    public static func rename(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
@@ -101,20 +107,20 @@ public class FileModifier {
          try fileManager.moveItem(atPath: fromURL, toPath: toURL)
          return true
       }catch let error as NSError {
-         print("rename.Error: \(error)")
+         print("FileModifier.rename() Error: \(error)")
          return false
       }
    }
    /**
-    * Creates a folder at PARAM path
+    * Creates a folder at some path
     */
    public static func createFolder(_ path: String) -> Bool {
       let fileManager = FileManager.default
       do {
          try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
          return true
-      }catch let error as NSError {
-         print("createFolder.Error: \(error)")
+      } catch let error as NSError {
+         print("FileModifier.createFolder() Error: \(error)")
          return false
       }
    }

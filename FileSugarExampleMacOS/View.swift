@@ -2,12 +2,12 @@ import Cocoa
 import FileSugar_macOS
 
 open class View: NSView {
-    override open var isFlipped: Bool { return true } /* TopLeft orientation */
+    override open var isFlipped: Bool { return true } // TopLeft orientation
     override public init(frame: CGRect) {
         super.init(frame: frame)
         Swift.print("hello world")
         test1()
-        self.wantsLayer = true /* if true then view is layer backed */
+        self.wantsLayer = true // if true then view is layer backed
     }
     /**
      * Boilerplate
@@ -24,7 +24,6 @@ extension View {
      */
     func test1() {
         let result = FileParser.content(dirPath: NSString(string: "~/Desktop/").expandingTildeInPath)
-//        Swift.print("result:  \(String(describing: result))")
         Swift.print("result.count:  \(result?.count)")
         result?.forEach {
             Swift.print("$0:  \($0)") // prints all the files on the desktop folder

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D10A279232BCAE300513EF4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10A278232BCAE300513EF4 /* String+Extension.swift */; };
+		9D10A27A232BCAE300513EF4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D10A278232BCAE300513EF4 /* String+Extension.swift */; };
 		9DF43467229E9A9E00996EE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DF43466229E9A9E00996EE7 /* AppDelegate.swift */; };
 		9DF43469229E9A9F00996EE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF43468229E9A9F00996EE7 /* Assets.xcassets */; };
 		9DF4346C229E9A9F00996EE7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF4346A229E9A9F00996EE7 /* MainMenu.xib */; };
@@ -88,6 +90,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9D10A278232BCAE300513EF4 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		9D1A3B6A231D0E88009E2B77 /* FileSugar_macOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FileSugar_macOS.framework; path = ../JSONSugar/Carthage/Build/Mac/FileSugar_macOS.framework; sourceTree = "<group>"; };
 		9DF43464229E9A9E00996EE7 /* FileSugarExampleMacOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileSugarExampleMacOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF43466229E9A9E00996EE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +164,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D10A277232BCAC100513EF4 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				9D10A278232BCAE300513EF4 /* String+Extension.swift */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
 		9D1A3B69231D0E87009E2B77 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				F1BED63721B4192200A0D3D4 /* FileParser.swift */,
+				9D10A277232BCAC100513EF4 /* common */,
 				F1BED63821B4192200A0D3D4 /* FileAsserter.swift */,
 				F1BED63921B4192200A0D3D4 /* path */,
 				F1BED63D21B4192200A0D3D4 /* FileModifier.swift */,
@@ -565,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D10A27A232BCAE300513EF4 /* String+Extension.swift in Sources */,
 				9DF4348B229E9BE000996EE7 /* FileModifier.swift in Sources */,
 				9DF43487229E9BE000996EE7 /* FileAsserter.swift in Sources */,
 				9DF43489229E9BE000996EE7 /* FilePathParser.swift in Sources */,
@@ -588,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D10A279232BCAE300513EF4 /* String+Extension.swift in Sources */,
 				F1BED64421B4192200A0D3D4 /* FileModifier.swift in Sources */,
 				F1BED64021B4192200A0D3D4 /* FileAsserter.swift in Sources */,
 				F1BED64221B4192200A0D3D4 /* FilePathParser.swift in Sources */,

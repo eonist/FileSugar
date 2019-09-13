@@ -1,5 +1,7 @@
 import Foundation
-
+/**
+ * FileParser for iOS and macOs
+ */
 public class FileParser {
    /**
     * Data for URL
@@ -14,6 +16,8 @@ public class FileParser {
    }
    /**
     * Data for filePath (String)
+    * ## Examples:
+    * guard let data: Data = FileParser.data(filePath: filePath) else { Swift.print("no content"); fatalError("no content") }
     */
    public static func data(filePath: String) -> Data? {
       do {
@@ -52,15 +56,15 @@ public class FileParser {
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
-      if let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) {
-         return content(filePath: filepath)
-      } else {
-         return nil // example.txt not found!
-      }
+      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // example.txt not found!
+      return content(filePath: filepath)
    }
    /**
     * - Note: make sure the file exists with: FileAsserter.exists("some path here")
     * - Parameter filePath: Can't be tildePath, must be absolute Users/John/...
+    * ## Examples:
+    * let filePath: String = NSString(string: "~/Desktop/test.txt").expandingTildeInPath
+    * let date: Date? = FileParser.modificationDate()
     */
    public static func modificationDate(_ filePath: String) -> NSDate? {
       let fileURL: NSURL = .init(fileURLWithPath: filePath)
@@ -72,7 +76,8 @@ public class FileParser {
     * Returns paths of content in a dir
     * - Note: This is the root folder of the main Harddrive on your computer
     * ## Examples:
-    * FileParser.content(dirPath: NSString(string: "~/Desktop/").expandingTildeInPath)
+    * let filePath = NSString(string: "~/Desktop/").expandingTildeInPath
+    * FileParser.content(dirPath: filePath)
     */
    public static func content(dirPath path: String) -> [String]? {
       let fileManager = FileManager.default
@@ -80,7 +85,7 @@ public class FileParser {
          let files = try fileManager.contentsOfDirectory(atPath: path)
          return files
       }catch let error as NSError {
-         print("Error: \(error)")
+         print("FileParser.content Error: \(error)")
          return nil
       }
    }
@@ -92,34 +97,32 @@ public class FileParser {
    }
    /**
     * Returns the current directory path
+    *
     */
    public static var curDir: String {
       let fileManager = FileManager.default
       return fileManager.currentDirectoryPath
    }
 }
-
 #if os(OSX)
 import Cocoa
-
+/**
+ * Fileparsing for mac only
+ */
 extension FileParser {
    /**
     * Returns an xml instance comprised of the string content at location PARAM: path
     * ## Examples:
-    * xml("~/Desktop/assets/xml/table.xml".tildePath)//Output: XML instance
+    * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
     */
    public static func xml(_ path: String) -> XMLElement? {
       guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") }
       do {
          let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0))
-         if let rootElement: XMLElement = xmlDoc.rootElement() {
-            return rootElement
-         }else {
-            return nil
-         }
+         return xmlDoc.rootElement()
       } catch let error as NSError {
-         print("Error: \(error.domain) path:\(path)")
+         Swift.print("FileParser.xml Error: \(error.domain) path:\(path)")
          return nil
       }
    }
@@ -127,13 +130,11 @@ extension FileParser {
     * - Note: you have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
     */
    private static func modalExample() {
-      let myFileDialog: NSOpenPanel = .init()/*open modal panel*/
+      let myFileDialog: NSOpenPanel = .init() // Open modal panel
       myFileDialog.runModal()
-      let thePath = myFileDialog.url?.path/*Get the path to the file chosen in the NSOpenPanel*/
-      if let thePath = thePath {/*Make sure that a path was chosen*/
-         if let theContent = FileParser.content(filePath: thePath) {
-            Swift.print("theContent: " + "\(theContent)")
-         }
+      let thePath = myFileDialog.url?.path // Get the path to the file chosen in the NSOpenPanel
+      if let thePath = thePath, let theContent = FileParser.content(filePath: thePath) { // Make sure that a path was chosen
+          Swift.print("theContent: " + "\(theContent)")
       }
    }
 }

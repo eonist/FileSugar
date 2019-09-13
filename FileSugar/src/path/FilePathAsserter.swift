@@ -14,7 +14,7 @@ public class FilePathAsserter {
         return path.hasPrefix("../")
     }
     /**
-     * - Remark: naive approche
+     * - Note: naive approach
      */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {
         return path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
