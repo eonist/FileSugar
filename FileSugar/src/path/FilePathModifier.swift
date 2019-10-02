@@ -44,4 +44,3 @@ extension FilePathModifier {
    }
 }
 #endif
-

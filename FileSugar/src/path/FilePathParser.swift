@@ -92,4 +92,3 @@ extension FilePathParser {
       return fileName(path, withExtension)
    }
 }
-
