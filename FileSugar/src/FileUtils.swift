@@ -1,6 +1,6 @@
 import Foundation
 
-public class FileUtils { // - FIXME: ⚠️️ rename to FileUtil
+public class FileUtils { // - Fixme: ⚠️️ rename to FileUtil
    /**
     * - Note: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ApplicationKit/Classes/NSWorkspace_Class/index.html#//apple_ref/occ/instm/NSWorkspace/openURL:
     * - Fixme: ⚠️️ What format is the filePath in?
