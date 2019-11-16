@@ -1,46 +1,61 @@
 import Foundation
-
-class FileStreamWriter {
-	/**
+/**
+ * Writes data to a file (Continiously)
+ */
+public final class FileStreamWriter {
+   /**
     * Reads data from filepath
-	 * - Note: https://stackoverflow.com/questions/37981375/nsfilehandle-updateatpath-how-can-i-update-file-instead-of-overwriting
-	 * ## Examples:
-	 *
+    * - Important: ⚠️️ This method writes over the data that is already there (It does not insert)
+    * - Note: https://stackoverflow.com/questions/37981375/nsfilehandle-updateatpath-how-can-i-update-file-instead-of-overwriting
+    * ## Examples:
+    * let filePath:String = NSString(string: "~/Desktop/del.txt").expandingTildeInPath
+    * guard let data:Data = ("black dog" as NSString).data(using: String.Encoding.utf8.rawValue) else {Swift.print("unable to create data");return}
+    * FileStreamWriter.write(filePath: filePath, data: data, index: 0)
+    * - Fixme: ⚠️️ Use Result type
     */
-	static func write(filePath: String, data: Data, index: Int) -> Bool {
-		//guard here
-		let file: NSFileHandle? = NSFileHandle(forUpdatingAtPath: filepath1)
-		if file == nil {
-		    print("File open failed")
-			 // var error:NSError?
-			 do {
-              try data.writeToFile(filePath, atomically: true, encoding: NSUTF8StringEncoding)
-          } catch {
-              print("Error creating \(filePath)")
-				  return false
-          }
-			 return true
-		} else {
-		    let data = ("black dog" as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-		    file?.seekToFileOffset(index)
-		    file?.writeData(data!)
-		    file?.closeFile()
-			 return true
-		}
-	}
-	/**
+   public static func write(url: URL, data: Data, index: UInt64) throws {
+      let fileExists: Bool = FileManager().fileExists(atPath: url.path)
+      if fileExists == false {
+         do {
+            try data.write(to: url, options: .atomic)/*Make the file, since it didn't exist*/
+         } catch {
+            throw ("FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)")
+         }
+      }
+      do {
+         let file: FileHandle = try .init(forUpdating: url)
+         file.seek(toFileOffset: index)
+         file.write(data)
+         file.closeFile()
+      } catch {
+         throw ("FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)")
+      }
+   }
+   /**
     * Empties a file
+    * - Fixme: ⚠️️ Use Result type
     */
-	static func clear(filePath: String) -> Bool {
-		//guard here
-		let file: NSFileHandle? = NSFileHandle(forUpdatingAtPath: filepath1)
-		if file == nil {
-			 print("File open failed")
-			 return false
-		} else {
-			 file?.truncateFileAtOffset(0)
-			 file?.closeFile()
-			 return true
-		}
-	}
+   public static func clear(filePath: String) throws {
+      let url: URL = .init(fileURLWithPath: filePath)
+      do {
+         let file: FileHandle = try .init(forUpdating: url)
+         file.truncateFile(atOffset: 0)
+         file.closeFile()
+      } catch {
+         throw ("Error: \(error) creating \(filePath)")
+      }
+   }
+}
+/**
+ * Convenience
+ */
+extension FileStreamWriter {
+   /**
+    * Support for filePath
+    * - Fixme: ⚠️️ Use Result type
+    */
+   public static func write(filePath: String, data: Data, index: UInt64) throws {
+      let url: URL = .init(fileURLWithPath: filePath)
+      try write(url: url, data: data, index: index)
+   }
 }
