@@ -10,14 +10,17 @@ public class FileModifier {
     * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
     * - Important: ⚠️️ the toURL needs to have the name of the file as well.
     */
-   public static func move(_ fromURL: String, toURL: String) {
+   @discardableResult
+   public static func move(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       let fromURL: URL = .init(fileURLWithPath: fromURL)
       let toURL: URL = .init(fileURLWithPath: toURL)
       do {
          try fileManager.moveItem(at: fromURL, to: toURL)
+         return true
       } catch let error as NSError {
          print("Error: \(error.domain)")
+         return false
       }
    }
    /**
@@ -25,6 +28,7 @@ public class FileModifier {
     * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
     * - Important: ⚠️️ the toURL needs to have the name of the file as well.
     */
+   @discardableResult
    public static func copy(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       let fromURL: URL = .init(fileURLWithPath: fromURL)
@@ -45,6 +49,7 @@ public class FileModifier {
     * - Note: this method over-writes data to files that already exists as well
     * - Note: this method creates a new file if non exists before
     */
+   @discardableResult
    public static func write(_ path: String, content: String) -> Bool {
       do {
          try content.write(toFile: path, atomically: true, encoding: .utf8)
@@ -59,6 +64,7 @@ public class FileModifier {
     * - Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     */
+   @discardableResult
    public static func write(path: String, data: Data) -> Bool {
       do {
          try data.write(to: URL(fileURLWithPath: path), options: [.atomic])
@@ -74,6 +80,7 @@ public class FileModifier {
     * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
     * - Note: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     */
+   @discardableResult
    public static func createDir(path: String) -> Bool {
       do {
          try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
@@ -86,6 +93,7 @@ public class FileModifier {
    /**
     * Deletes a file at a speccific path
     */
+   @discardableResult
    public static func delete(_ path: String) -> Bool {
       let fileManager = FileManager.default
       do {
@@ -101,6 +109,7 @@ public class FileModifier {
     * Renames a file
     * - Fixme: ⚠️️ Write example
     */
+   @discardableResult
    public static func rename(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       do {
@@ -114,6 +123,7 @@ public class FileModifier {
    /**
     * Creates a folder at some path
     */
+   @discardableResult
    public static func createFolder(_ path: String) -> Bool {
       let fileManager = FileManager.default
       do {
@@ -127,12 +137,14 @@ public class FileModifier {
    /**
     * Append text to file
     */
+   @discardableResult
    public static func append(_ path: String, text: String) -> Bool {
       append(path, text: text, index: text.lengthOfBytes(using: .utf8))
    }
    /**
     * Append text to file at index
     */
+   @discardableResult
    public static func append(_ path: String, text: String, index: Int) -> Bool {
       guard let os = OutputStream(toFileAtPath: path, append: true) else { return false }
       os.open()
