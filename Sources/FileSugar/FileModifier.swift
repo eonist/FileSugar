@@ -48,6 +48,7 @@ public class FileModifier {
     * FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
     * - Note: this method over-writes data to files that already exists as well
     * - Note: this method creates a new file if non exists before
+    * Fixme: ⚠️️ this should just use write(data: content.data utf8 etc)
     */
    @discardableResult
    public static func write(_ path: String, content: String) -> Bool {
@@ -63,6 +64,7 @@ public class FileModifier {
     * Write data to path
     * - Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
+    * Fixme: this should throw?
     */
    @discardableResult
    public static func write(path: String, data: Data) -> Bool {
