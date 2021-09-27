@@ -13,3 +13,6 @@ FileModifier.write("~/Desktop/temp.txt".tildePath, "test")
 FileAsserter.exists("~/Desktop/temp.txt".tildePath) // Output: true
 FileParser.content("~/Desktop/temp.txt".tildePath) // Output: test
 ```
+
+### Todo:
+- Add test file in spm resource .bundle
