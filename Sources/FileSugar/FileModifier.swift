@@ -109,7 +109,6 @@ public class FileModifier {
    }
    /**
     * Renames a file
-    * - Fixme: ⚠️️ Write example
     */
    @discardableResult
    public static func rename(_ fromURL: String, toURL: String) -> Bool {
@@ -132,7 +131,7 @@ public class FileModifier {
          try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
          return true
       } catch let error as NSError {
-         print("FileModifier.createFolder() Error: \(error)")
+         Swift.print("⚠️️ FileModifier.createFolder() Error: \(error)")
          return false
       }
    }

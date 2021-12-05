@@ -8,7 +8,7 @@ public class FilePathAsserter {
         path.hasPrefix(pathSeperator)
     }
     /**
-     * Fixme: ⚠️️ the name is not great, improve later, rename to atleast hasBacklash
+     * - Note: alternate name: hasBacklash
      */
     public static func isBacklash(_ path: String) -> Bool {
         path.hasPrefix("../")

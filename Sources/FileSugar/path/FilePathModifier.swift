@@ -18,6 +18,7 @@ import Cocoa
 extension FilePathModifier {
    /**
     * - Parameter baseURL: must be absolute: "Users/John/Desktop/temp"
+    * - Parameter filePath: filepath
     * - Return asolute paths aka: Users/John/... (use path.tildify to make them user agnostic)
     * ## Examples:
     * Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp

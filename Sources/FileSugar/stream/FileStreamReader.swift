@@ -17,7 +17,6 @@ public class FileStreamReader {
          let file: FileHandle = try .init(forReadingFrom: url)
          file.seek(toFileOffset: startIndex)
          let length: Int = endIndex - Int(startIndex)
-//         Swift.print("length:  \(length)")
          let databuffer = file.readData(ofLength: length)
          file.closeFile()
          return databuffer
@@ -26,7 +25,6 @@ public class FileStreamReader {
       }
    }
 }
-//let data = fileHandle?.readDataToEndOfFile()
 extension FileStreamReader {
    /**
     * Returns filesize for a filePath
@@ -45,7 +43,7 @@ extension FileStreamReader {
          return fileSize
       }
       catch let error as NSError {
-         throw NSError(domain: ("Something went wrong: \(error)"), code: 0)
+         throw NSError(domain: ("⚠️️ Something went wrong: \(error)"), code: 0)
       }
    }
 }

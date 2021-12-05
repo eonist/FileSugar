@@ -25,7 +25,7 @@ public class FileParser {
          let content: Data = try .init(contentsOf: url)
          return content
       } catch let error as NSError {
-         Swift.print("Error: \(error)")
+         Swift.print("⚠️️ Error: \(error)")
          return nil
       }
    }
@@ -46,7 +46,7 @@ public class FileParser {
          let content: String = try .init(contentsOfFile: path, encoding: encoding)
          return content
       } catch  let error as NSError {
-         Swift.print("Error: \(error)")
+         Swift.print("⚠️️ Error: \(error)")
          return nil
       }
    }
@@ -122,7 +122,7 @@ extension FileParser {
          let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0))
          return xmlDoc.rootElement()
       } catch let error as NSError {
-         Swift.print("FileParser.xml Error: \(error.domain) path:\(path)")
+         Swift.print("⚠️️ FileParser.xml Error: \(error.domain) path:\(path)")
          return nil
       }
    }
