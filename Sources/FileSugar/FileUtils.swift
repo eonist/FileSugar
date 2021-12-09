@@ -9,7 +9,7 @@ class FileUtils {
     * ## Examples:
     * showFileInFinder("~/dev/Element") -> shows the file or folder in finder
     */
-   public static func showFileInFinder(_ filePath: String) {
+   static func showFileInFinder(_ filePath: String) {
       let expandedFilePath: String = filePath.tildePath
       NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: expandedFilePath)
    }
