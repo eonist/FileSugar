@@ -2,7 +2,7 @@ import Foundation
 /**
  * FileParser for iOS and macOs
  */
-public class FileParser {
+public final class FileParser {
    /**
     * Data for URL
     */

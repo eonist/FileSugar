@@ -1,6 +1,6 @@
 import Foundation
 
-public class FileAsserter {
+public final class FileAsserter {
    /**
     * Asserts if a file or folder exists
     * ## Examples:

@@ -1,6 +1,6 @@
 import Foundation
 
-public class FileModifier {
+public final class FileModifier {
    /**
     * - Parameter: fromURL: Ie: "/path/to/old"
     * - Parameter: toURL: Ie: "/path/to/new"

@@ -1,6 +1,6 @@
 import Foundation
 
-public class FilePathAsserter {
+public final class FilePathAsserter {
     /**
      * Tests if a path is absolute /User/John/ or relative : ../../ or styles/design/
      */

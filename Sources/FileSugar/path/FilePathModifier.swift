@@ -2,7 +2,7 @@ import Foundation
 /**
  * There is also tildify which makes file paths user agnostic (~ instad of hardocded user)
  */
-public class FilePathModifier {
+public final class FilePathModifier {
    /**
     * ## Examples:
     * FilePathModifier.normalize("/Users/John/Desktop/temp/../test.txt".tildePath)///Users/John/Desktop/test.txt

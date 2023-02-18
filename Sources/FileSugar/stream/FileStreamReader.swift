@@ -2,7 +2,7 @@ import Foundation
 /**
  * Reads data from a file (Continiously)
  */
-public class FileStreamReader {
+public final class FileStreamReader {
    /**
     * Reads data from filepath
     * ## Examples:

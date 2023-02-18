@@ -1,6 +1,6 @@
 import Foundation
 
-public class FilePathParser {
+public final class FilePathParser {
    /**
     * - Returns the path to where you can save your app's files. Here it is:
     * - Output: /Users/James/Documents
