@@ -5,7 +5,7 @@ import Foundation
 public final class FileStreamWriter {
    /**
     * Reads data from filepath
-    * - Important: ⚠️️ This method writes over the data that is already there (It does not insert)
+    * - Remark: This method writes over the data that is already there (It does not insert)
     * - Note: https://stackoverflow.com/questions/37981375/nsfilehandle-updateatpath-how-can-i-update-file-instead-of-overwriting
     * ## Examples:
     * let filePath:String = NSString(string: "~/Desktop/del.txt").expandingTildeInPath

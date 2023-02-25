@@ -31,15 +31,15 @@ public final class FilePathParser {
       path.absoluteString
    }
    /**
-    * - Note: You can also do: NSString(string: self).stringByExpandingTildeInPath
+    * You can also do: NSString(string: self).stringByExpandingTildeInPath
     */
    public static func userHomePath() -> String {
       NSHomeDirectory()
    }
    /**
     * - Returns: fileName
-    * ## Examples: FilePathParser.fileName(fileURL)
-    * - Examples:
+    * ## Examples:
+    * FilePathParser.fileName(fileURL)
     * let filePath = NSString("~/Desktop/temp.xml").expandingTildeInPath
     * let attributes = try! URL(fileURLWithPath:).resourceValuesForKeys([NSURLContentModificationDateKey, NSURLNameKey])
     * let filename = attributes[NSURLNameKey] as! String
@@ -58,7 +58,7 @@ public final class FilePathParser {
       return fileName(url, withExtension)
    }
    /**
-    * - Returns directory
+    * Returns directory
     * ## Examples:
     * FilePathParser.directory(fileURL)
     */
@@ -66,7 +66,7 @@ public final class FilePathParser {
       fileURL.absoluteURL.deletingPathExtension().absoluteString
    }
    /**
-    * - Returns the project resource folder
+    * Returns the project resource folder
     * - Note: https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSBundle_Class/
     * ## Examples:
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
@@ -75,9 +75,9 @@ public final class FilePathParser {
       Bundle.main.resourcePath
    }
    /**
+    * Does not need tilde expand to work
     * ## Examples:
     * fileExtension("~/Desktop/temp.xml") // xml
-    * - Note: Does not need tilde expand to work
     */
    public static func fileExtension(_ filePath: String) -> String {
       NSString(string: filePath).pathExtension

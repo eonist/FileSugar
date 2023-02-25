@@ -30,7 +30,7 @@ extension FileStreamReader {
     * Returns filesize for a filePath
     * ## Examples:
     * let fileSize = FileStreamReader.fileSize(filePath: filePath)
-    * - Note: same as doing `data.count`
+    * - Remark: same as doing `data.count`
     */
    public static func fileSize(filePath: String) throws -> UInt64 {
       let fileUrl = URL(fileURLWithPath: filePath)

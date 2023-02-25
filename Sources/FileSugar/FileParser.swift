@@ -31,9 +31,9 @@ public final class FileParser {
    }
    /**
     * Returns string content from a file at file location "path"
-    * - Parameter path: is the file path to the file in this format: (User/John/Desktop/test.txt) aka absolute
+    * - Parameter path: is the file path to the file in this format: `User/John/Desktop/test.txt` aka absolute
     * - Important: ⚠️️ Remember to expand the path with the .tildePath call, if it's a tilde path
-    * - Note: Supports syntax like this: /Users/John/Desktop/temp/../test.txt (the temp folder is excluded in this case)
+    * - Remark: Supports syntax like this: `/Users/John/Desktop/temp/../test.txt` (the temp folder is excluded in this case)
     * ## Examples:
     * let path = "//Users/<path>/someFile.xml"
     * var err: NSError?
@@ -60,8 +60,8 @@ public final class FileParser {
       return content(filePath: filepath)
    }
    /**
-    * - Note: make sure the file exists with: FileAsserter.exists("some path here")
-    * - Parameter filePath: Can't be tildePath, must be absolute Users/John/...
+    * Make sure the file exists with: `FileAsserter.exists("some path here")`
+    * - Parameter filePath: Can't be tildePath, must be absolute `Users/John/...`
     * ## Examples:
     * let filePath: String = NSString(string: "~/Desktop/test.txt").expandingTildeInPath
     * let date: Date? = FileParser.modificationDate()
@@ -111,7 +111,7 @@ import Cocoa
  */
 extension FileParser {
    /**
-    * Returns an xml instance comprised of the string content at location PARAM: path
+    * Returns an xml instance comprised of the string content at location path
     * ## Examples:
     * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
@@ -127,7 +127,7 @@ extension FileParser {
       }
    }
    /**
-    * - Note: you have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
+    * You have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
     */
    private static func modalExample() {
       let myFileDialog: NSOpenPanel = .init() // Open modal panel

@@ -46,8 +46,8 @@ public final class FileModifier {
     * write string to path
     * - Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
-    * - Note: this method over-writes data to files that already exists as well
-    * - Note: this method creates a new file if non exists before
+    * - Remark: this method over-writes data to files that already exists as well
+    * - Remark: this method creates a new file if non exists before
     * Fixme: ⚠️️ this should just use write(data: content.data utf8 etc)
     */
    @discardableResult
@@ -62,7 +62,7 @@ public final class FileModifier {
    }
    /**
     * Write data to path
-    * - Examples:
+    * ## Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     * Fixme: this should throw?
     */
@@ -78,9 +78,9 @@ public final class FileModifier {
    }
    /**
     * Create a directory at a path
+    * - Remark: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     * ## Examples:
     * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
-    * - Note: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     */
    @discardableResult
    public static func createDir(path: String) -> Bool {

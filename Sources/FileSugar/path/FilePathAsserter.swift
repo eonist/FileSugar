@@ -8,13 +8,13 @@ public final class FilePathAsserter {
         path.hasPrefix(pathSeperator)
     }
     /**
-     * - Note: alternate name: hasBacklash
+     * - Fixme: ⚠️️ Alternate name: hasBacklash ?
      */
     public static func isBacklash(_ path: String) -> Bool {
         path.hasPrefix("../")
     }
     /**
-     * - Note: naive approach
+     * "Naive approach"
      */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {
         path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
