@@ -136,7 +136,7 @@ public final class FileModifier {
       }
    }
    /**
-    * Append text to file
+    * Append text to end of file
     */
    @discardableResult
    public static func append(_ path: String, text: String) -> Bool {
