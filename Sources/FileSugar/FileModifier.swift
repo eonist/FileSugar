@@ -2,16 +2,16 @@ import Foundation
 
 public final class FileModifier {
    /**
-    * - Parameter: fromURL: Ie: "/path/to/old"
-    * - Parameter: toURL: Ie: "/path/to/new"
-    * - Fixme: additional catch clauses:
     * catch NSCocoaError.FileNoSuchFileError {print("Error: no such file exists")
     * catch NSCocoaError.FileReadUnsupportedSchemeError {print("Error: unsupported scheme (should be 'file://')")}
-    * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
-    * - Important: ⚠️️ the toURL needs to have the name of the file as well.
+    * - Fixme: ⚠️️ Additional catch clauses:
+    * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * - Remark: The toURL needs to have the name of the file as well.
+    * - Parameters:
+    *    - fromURL: Ie: "/path/to/old"
+    *    - toURL: Ie: "/path/to/new"
     */
-   @discardableResult
-   public static func move(_ fromURL: String, toURL: String) -> Bool {
+   @discardableResult public static func move(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       let fromURL: URL = .init(fileURLWithPath: fromURL)
       let toURL: URL = .init(fileURLWithPath: toURL)
@@ -25,11 +25,13 @@ public final class FileModifier {
    }
    /**
     * Copies a file to another location
-    * - Important: ⚠️️ paths must be created with: URL(fileURLWithPath: directory) and then .path
-    * - Important: ⚠️️ the toURL needs to have the name of the file as well.
+    * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * - Remark: The toURL needs to have the name of the file as well.
+    * - Parameters:
+    *   - fromURL: - Fixme: ⚠️️ add doc
+    *   - toURL: - Fixme: ⚠️️ add doc
     */
-   @discardableResult
-   public static func copy(_ fromURL: String, toURL: String) -> Bool {
+   @discardableResult public static func copy(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       let fromURL: URL = .init(fileURLWithPath: fromURL)
       let toURL: URL = .init(fileURLWithPath: toURL)
@@ -43,15 +45,17 @@ public final class FileModifier {
       }
    }
    /**
-    * write string to path
+    * Write string to path
     * - Examples:
-    * FileModifier.write("~/Desktop/del.txt".tildePath, "test")//returns true or false depending on if something was written or not
+    * FileModifier.write("~/Desktop/del.txt".tildePath, "test") // returns true or false depending on if something was written or not
     * - Remark: this method over-writes data to files that already exists as well
     * - Remark: this method creates a new file if non exists before
-    * Fixme: ⚠️️ this should just use write(data: content.data utf8 etc)
+    * - Fixme: ⚠️️ This should just use write(data: content.data utf8 etc)
+    * - Parameters:
+    *   - path: use URL().path not URL().absolutepath
+    *   - content: - Fixme: ⚠️️ add doc
     */
-   @discardableResult
-   public static func write(_ path: String, content: String) -> Bool {
+   @discardableResult public static func write(_ path: String, content: String) -> Bool {
       do {
          try content.write(toFile: path, atomically: true, encoding: .utf8)
          return true
@@ -65,9 +69,11 @@ public final class FileModifier {
     * ## Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     * Fixme: this should throw?
+    * - Parameters:
+    *   - path: - Fixme: ⚠️️
+    *   - data: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func write(path: String, data: Data) -> Bool {
+   @discardableResult public static func write(path: String, data: Data) -> Bool {
       do {
          try data.write(to: URL(fileURLWithPath: path), options: [.atomic])
          return true
@@ -81,9 +87,9 @@ public final class FileModifier {
     * - Remark: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     * ## Examples:
     * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
+    * - Parameter path: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func createDir(path: String) -> Bool {
+   @discardableResult public static func createDir(path: String) -> Bool {
       do {
          try FileManager.default.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
          return true
@@ -94,9 +100,9 @@ public final class FileModifier {
    }
    /**
     * Deletes a file at a speccific path
+    * - Parameter path: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func delete(_ path: String) -> Bool {
+   @discardableResult public static func delete(_ path: String) -> Bool {
       let fileManager = FileManager.default
       do {
          try fileManager.removeItem(atPath: path)
@@ -109,9 +115,11 @@ public final class FileModifier {
    }
    /**
     * Renames a file
+    * - Parameters:
+    *   - fromURL: - Fixme: ⚠️️
+    *   - toURL: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func rename(_ fromURL: String, toURL: String) -> Bool {
+   @discardableResult public static func rename(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
       do {
          try fileManager.moveItem(atPath: fromURL, toPath: toURL)
@@ -123,9 +131,9 @@ public final class FileModifier {
    }
    /**
     * Creates a folder at some path
+    * - Parameter path: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func createFolder(_ path: String) -> Bool {
+   @discardableResult public static func createFolder(_ path: String) -> Bool {
       let fileManager = FileManager.default
       do {
          try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil)
@@ -137,16 +145,21 @@ public final class FileModifier {
    }
    /**
     * Append text to end of file
+    * - Parameters:
+    *   - path: - Fixme: ⚠️️
+    *   - text: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func append(_ path: String, text: String) -> Bool {
+   @discardableResult public static func append(_ path: String, text: String) -> Bool {
       append(path, text: text, index: text.lengthOfBytes(using: .utf8))
    }
    /**
     * Append text to file at index
+    * - Parameters:
+    *   - path: - Fixme: ⚠️️
+    *   - text: - Fixme: ⚠️️
+    *   - index: - Fixme: ⚠️️
     */
-   @discardableResult
-   public static func append(_ path: String, text: String, index: Int) -> Bool {
+   @discardableResult public static func append(_ path: String, text: String, index: Int) -> Bool {
       guard let os = OutputStream(toFileAtPath: path, append: true) else { return false }
       os.open()
       os.write(text, maxLength: index)

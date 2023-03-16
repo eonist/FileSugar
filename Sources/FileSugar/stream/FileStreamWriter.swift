@@ -12,6 +12,10 @@ public final class FileStreamWriter {
     * guard let data:Data = ("black dog" as NSString).data(using: String.Encoding.utf8.rawValue) else {Swift.print("unable to create data");return}
     * FileStreamWriter.write(filePath: filePath, data: data, index: 0)
     * - Fixme: ⚠️️ Use Result type
+    * - Parameters:
+    *   - url: - Fixme: ⚠️️
+    *   - data: - Fixme: ⚠️️
+    *   - index: - Fixme: ⚠️️
     */
    public static func write(url: URL, data: Data, index: UInt64) throws {
       let fileExists: Bool = FileManager().fileExists(atPath: url.path)
@@ -36,6 +40,7 @@ public final class FileStreamWriter {
    /**
     * Empties a file
     * - Fixme: ⚠️️ Use Result type
+    * - Parameter filePath: - Fixme: ⚠️️
     */
    public static func clear(filePath: String) throws {
       let url: URL = .init(fileURLWithPath: filePath)
@@ -56,6 +61,10 @@ extension FileStreamWriter {
    /**
     * Support for filePath
     * - Fixme: ⚠️️ Use Result type
+    * - Parameters:
+    *   - filePath: - Fixme: ⚠️️
+    *   - data: - Fixme: ⚠️️
+    *   - index: - Fixme: ⚠️️ 
     */
    public static func write(filePath: String, data: Data, index: UInt64) throws {
       let url: URL = .init(fileURLWithPath: filePath)

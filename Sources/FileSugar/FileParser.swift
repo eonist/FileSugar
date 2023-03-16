@@ -5,6 +5,7 @@ import Foundation
 public final class FileParser {
    /**
     * Data for URL
+    * - Parameter url: - Fixme: ⚠️️
     */
    public static func data(url: URL) -> Data? {
       do {
@@ -18,6 +19,7 @@ public final class FileParser {
     * Data for filePath (String)
     * ## Examples:
     * guard let data: Data = FileParser.data(filePath: filePath) else { Swift.print("no content"); fatalError("no content") }
+    * - Parameter filePath: - Fixme: ⚠️️
     */
    public static func data(filePath: String) -> Data? {
       do {
@@ -31,7 +33,6 @@ public final class FileParser {
    }
    /**
     * Returns string content from a file at file location "path"
-    * - Parameter path: is the file path to the file in this format: `User/John/Desktop/test.txt` aka absolute
     * - Important: ⚠️️ Remember to expand the path with the .tildePath call, if it's a tilde path
     * - Remark: Supports syntax like this: `/Users/John/Desktop/temp/../test.txt` (the temp folder is excluded in this case)
     * ## Examples:
@@ -40,6 +41,9 @@ public final class FileParser {
     * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
     * ## Examples:
     * FileParser.content(dirPath: NSString(string: "~/Desktop/temp.txt").expandingTildeInPath)
+    * - Parameters:
+    *   - path: is the file path to the file in this format: `User/John/Desktop/test.txt` aka absolute
+    *   - encoding: - Fixme: ⚠️️
     */
    public static func content(filePath path: String, encoding: String.Encoding = .utf8) -> String? {
       do {
@@ -54,6 +58,9 @@ public final class FileParser {
     * FileParser.resourceContent("example","txt")
     * ## Examples:
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
+    * - Parameters:
+    *   - fileName: - Fixme: ⚠️️
+    *   - fileExtension: - Fixme: ⚠️️
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
       guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // example.txt not found!
@@ -78,6 +85,7 @@ public final class FileParser {
     * ## Examples:
     * let filePath = NSString(string: "~/Desktop/").expandingTildeInPath
     * FileParser.content(dirPath: filePath)
+    * - Parameter path: - Fixme: ⚠️️
     */
    public static func content(dirPath path: String) -> [String]? {
       let fileManager = FileManager.default
@@ -115,6 +123,7 @@ extension FileParser {
     * ## Examples:
     * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
+    * - Parameter path: - Fixme: ⚠️️
     */
    public static func xml(_ path: String) -> XMLElement? {
       guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") }

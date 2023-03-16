@@ -6,6 +6,7 @@ public final class FilePathModifier {
    /**
     * ## Examples:
     * FilePathModifier.normalize("/Users/John/Desktop/temp/../test.txt".tildePath)///Users/John/Desktop/test.txt
+    * - Parameter urlStr: - Fixme: ⚠️️
     */
    public static func normalize(_ urlStr: String) -> String? {
       guard let url: URL = FilePathParser.path(urlStr) else { return nil }
@@ -17,8 +18,9 @@ public final class FilePathModifier {
 import Cocoa
 extension FilePathModifier {
    /**
-    * - Parameter baseURL: must be absolute: "Users/John/Desktop/temp"
-    * - Parameter filePath: filepath
+    * - Parameters:
+    *   - baseURL: must be absolute: "Users/John/Desktop/temp"
+    *   - filePath: filepath
     * - Return asolute paths aka: Users/John/... (use path.tildify to make them user agnostic)
     * ## Examples:
     * Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp
