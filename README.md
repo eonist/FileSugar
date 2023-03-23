@@ -1,4 +1,5 @@
 [![Tests](https://github.com/eonist/FileSugar/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/FileSugar/actions/workflows/Tests.yml)
+[![codebeat badge](https://codebeat.co/badges/b4b79239-d1f9-4c9a-8c46-d6a1b9dcb559)](https://codebeat.co/projects/github-com-eonist-filesugar-master)
 
 # FileSugar
 <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">
