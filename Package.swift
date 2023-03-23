@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.6
 import PackageDescription
 
 let package = Package(
@@ -6,7 +6,6 @@ let package = Package(
     products: [
         .library(
             name: "FileSugar",
-            platforms: [.iOS(.v12), .macOS(.v10_13)],
             targets: ["FileSugar"])
     ],
     dependencies: [
