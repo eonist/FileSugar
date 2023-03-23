@@ -5,7 +5,7 @@ final class FileSugarTests: XCTestCase {
    override func setUp() {
       super.setUp()
 //      _ = () // Put setup code here. This method is called before the invocation of each test method in the class.
-      testExample()
+      Self.testExample()
    }
    fileprivate static func testExample() {
       // - Fixme: ⚠️️  write txt to temp folder, then assert
