@@ -1,3 +1,5 @@
+[![Tests](https://github.com/eonist/FileSugar/actions/workflows/Tests.yml/badge.svg)](https://github.com/eonist/FileSugar/actions/workflows/Tests.yml)
+
 # FileSugar
 <img width="100" alt="img" src="https://rawgit.com/stylekit/img/master/FileLib.svg">
 
