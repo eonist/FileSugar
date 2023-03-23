@@ -6,6 +6,7 @@ let package = Package(
     products: [
         .library(
             name: "FileSugar",
+            platforms: [.iOS(.v12), .macOS(.v10_13)],
             targets: ["FileSugar"])
     ],
     dependencies: [
