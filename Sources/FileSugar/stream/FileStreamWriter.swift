@@ -13,9 +13,9 @@ public final class FileStreamWriter {
     * FileStreamWriter.write(filePath: filePath, data: data, index: 0)
     * - Fixme: ⚠️️ Use Result type
     * - Parameters:
-    *   - url: - Fixme: ⚠️️
-    *   - data: - Fixme: ⚠️️
-    *   - index: - Fixme: ⚠️️
+    *   - url: - Fixme: ⚠️️ add doc
+    *   - data: - Fixme: ⚠️️ add doc
+    *   - index: - Fixme: ⚠️️ add doc
     */
    public static func write(url: URL, data: Data, index: UInt64) throws {
       let fileExists: Bool = FileManager().fileExists(atPath: url.path)
@@ -40,7 +40,7 @@ public final class FileStreamWriter {
    /**
     * Empties a file
     * - Fixme: ⚠️️ Use Result type
-    * - Parameter filePath: - Fixme: ⚠️️
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    public static func clear(filePath: String) throws {
       let url: URL = .init(fileURLWithPath: filePath)
@@ -62,9 +62,9 @@ extension FileStreamWriter {
     * Support for filePath
     * - Fixme: ⚠️️ Use Result type
     * - Parameters:
-    *   - filePath: - Fixme: ⚠️️
-    *   - data: - Fixme: ⚠️️
-    *   - index: - Fixme: ⚠️️ 
+    *   - filePath: - Fixme: ⚠️️ add doc
+    *   - data: - Fixme: ⚠️️ add doc
+    *   - index: - Fixme: ⚠️️ add doc
     */
    public static func write(filePath: String, data: Data, index: UInt64) throws {
       let url: URL = .init(fileURLWithPath: filePath)

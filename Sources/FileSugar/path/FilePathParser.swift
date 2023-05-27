@@ -12,7 +12,7 @@ public final class FilePathParser {
    /**
     * ## Examples:
     * path("file:///Users/Me/Desktop/Doc.txt")/NSURL obj
-    * - Parameter stringPath: - Fixme: ⚠️️
+    * - Parameter stringPath: - Fixme: ⚠️️ add doc
     */
    public static func path(_ stringPath: String) -> URL? {
       URL(string: stringPath)
@@ -20,7 +20,7 @@ public final class FilePathParser {
    /**
     * ## Examples:
     * path(NSURL("file:///Users/Me/Desktop/Doc.txt"))//Users/Me/Desktop/Doc.txt
-    * - Parameter url: - Fixme: ⚠️️
+    * - Parameter url: - Fixme: ⚠️️ add doc
     */
    public static func path(_ url: URL) -> String {
       url.path
@@ -28,7 +28,7 @@ public final class FilePathParser {
    /**
     * ## Examples:
     * stringPath(path("file:///Users/Me/Desktop/Doc.txt"))//"file:///Users/Me/Desktop/Doc.txt"
-    * - Parameter path: - Fixme: ⚠️️
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    public static func stringPath(_ path: URL) -> String {
       path.absoluteString
@@ -49,8 +49,8 @@ public final class FilePathParser {
     * // you can also do:
     * let fileName = url.lastPathComponent // file.zip etc
     * - Parameters:
-    *   - fileURL: - Fixme: ⚠️️
-    *   - withExtension: - Fixme: ⚠️️
+    *   - fileURL: - Fixme: ⚠️️ add doc
+    *   - withExtension: - Fixme: ⚠️️ add doc
     */
    public static func fileName(_ fileURL: URL, _ withExtension: Bool = true) -> String {
       withExtension ? fileURL.absoluteURL.lastPathComponent : fileURL.absoluteURL.deletingPathExtension().lastPathComponent // was-> absoluteURL.URLByDeletingPathExtension before swift 3 upgrade
@@ -59,8 +59,8 @@ public final class FilePathParser {
     * ## Examples:
     * fileName("~/Desktop/temp.xml") // temp.xml
     * - Parameters:
-    *   - filePath: - Fixme: ⚠️️
-    *   - withExtension: - Fixme: ⚠️️
+    *   - filePath: - Fixme: ⚠️️ add doc
+    *   - withExtension: - Fixme: ⚠️️ add doc
     */
    public static func fileName(path filePath: String, withExtension: Bool = true) -> String? {
       guard let url: URL = path(filePath) else { return nil }
@@ -70,8 +70,8 @@ public final class FilePathParser {
     * Returns directory
     * ## Examples:
     * FilePathParser.directory(fileURL)
-    * - Parameter fileURL: - Fixme: ⚠️️
-    * - Returns: - Fixme: ⚠️️
+    * - Parameter fileURL: - Fixme: ⚠️️ add doc
+    * - Returns: - Fixme: ⚠️️ add doc
     */
    public static func directory(_ fileURL: URL) -> String {
       fileURL.absoluteURL.deletingPathExtension().absoluteString
@@ -89,18 +89,21 @@ public final class FilePathParser {
     * Does not need tilde expand to work
     * ## Examples:
     * fileExtension("~/Desktop/temp.xml") // xml
-    * - Parameter filePath: - Fixme: ⚠️️
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    public static func fileExtension(_ filePath: String) -> String {
       NSString(string: filePath).pathExtension
    }
 }
+/**
+ * Helper
+ */
 extension FilePathParser {
    /**
     * Convenience
     * - Parameters:
-    *   - fileURL: - Fixme: ⚠️️
-    *   - withExtension: - Fixme: ⚠️️
+    *   - fileURL: - Fixme: ⚠️️ add doc
+    *   - withExtension: - Fixme: ⚠️️ add doc
     */
    public static func fileName(fileURL: String, _ withExtension: Bool = true) -> String? {
       guard let path = path(fileURL) else { return nil }

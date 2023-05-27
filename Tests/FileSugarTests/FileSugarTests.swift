@@ -9,9 +9,8 @@ final class FileSugarTests: XCTestCase {
    }
    fileprivate static func testExample() {
       // - Fixme: ⚠️️  write txt to temp folder, then assert
-//      let fileURL: URL? = CamUtil.tempURL(suffix: ".jpeg")
+//      let fileURL: URL? = ...
 //      XCTAssertNotNil(fileURL)
 //      XCTAssertFalse(FileManager().fileExists(atPath: fileURL!.path))
-      //      XCTAssertEqual("Hello, World!", "Hello, World!")
    }
 }

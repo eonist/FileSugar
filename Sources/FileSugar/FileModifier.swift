@@ -8,8 +8,8 @@ public final class FileModifier {
     * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path
     * - Remark: The toURL needs to have the name of the file as well.
     * - Parameters:
-    *    - fromURL: Ie: "/path/to/old"
-    *    - toURL: Ie: "/path/to/new"
+    *    - fromURL: I.e: "/path/to/old"
+    *    - toURL: I.e: "/path/to/new"
     */
    @discardableResult public static func move(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
@@ -52,8 +52,8 @@ public final class FileModifier {
     * - Remark: this method creates a new file if non exists before
     * - Fixme: ⚠️️ This should just use write(data: content.data utf8 etc)
     * - Parameters:
-    *   - path: use URL().path not URL().absolutepath
-    *   - content: - Fixme: ⚠️️ add doc
+    *   - path: Use URL().path not URL().absolutepath
+    *   - content: - Fixme: ⚠️️ Add doc
     */
    @discardableResult public static func write(_ path: String, content: String) -> Bool {
       do {
@@ -70,8 +70,8 @@ public final class FileModifier {
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     * Fixme: this should throw?
     * - Parameters:
-    *   - path: - Fixme: ⚠️️
-    *   - data: - Fixme: ⚠️️
+    *   - path: - Fixme: ⚠️️ add doc
+    *   - data: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func write(path: String, data: Data) -> Bool {
       do {
@@ -87,7 +87,7 @@ public final class FileModifier {
     * - Remark: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     * ## Examples:
     * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
-    * - Parameter path: - Fixme: ⚠️️
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func createDir(path: String) -> Bool {
       do {
@@ -100,7 +100,7 @@ public final class FileModifier {
    }
    /**
     * Deletes a file at a speccific path
-    * - Parameter path: - Fixme: ⚠️️
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func delete(_ path: String) -> Bool {
       let fileManager = FileManager.default
@@ -116,8 +116,8 @@ public final class FileModifier {
    /**
     * Renames a file
     * - Parameters:
-    *   - fromURL: - Fixme: ⚠️️
-    *   - toURL: - Fixme: ⚠️️
+    *   - fromURL: - Fixme: ⚠️️ add doc
+    *   - toURL: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func rename(_ fromURL: String, toURL: String) -> Bool {
       let fileManager = FileManager.default
@@ -131,7 +131,7 @@ public final class FileModifier {
    }
    /**
     * Creates a folder at some path
-    * - Parameter path: - Fixme: ⚠️️
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func createFolder(_ path: String) -> Bool {
       let fileManager = FileManager.default
@@ -146,8 +146,8 @@ public final class FileModifier {
    /**
     * Append text to end of file
     * - Parameters:
-    *   - path: - Fixme: ⚠️️
-    *   - text: - Fixme: ⚠️️
+    *   - path: - Fixme: ⚠️️ add doc
+    *   - text: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func append(_ path: String, text: String) -> Bool {
       append(path, text: text, index: text.lengthOfBytes(using: .utf8))
@@ -155,9 +155,9 @@ public final class FileModifier {
    /**
     * Append text to file at index
     * - Parameters:
-    *   - path: - Fixme: ⚠️️
-    *   - text: - Fixme: ⚠️️
-    *   - index: - Fixme: ⚠️️
+    *   - path: - Fixme: ⚠️️ add doc
+    *   - text: - Fixme: ⚠️️ add doc
+    *   - index: - Fixme: ⚠️️ add doc
     */
    @discardableResult public static func append(_ path: String, text: String, index: Int) -> Bool {
       guard let os = OutputStream(toFileAtPath: path, append: true) else { return false }

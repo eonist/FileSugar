@@ -8,7 +8,7 @@ class FileUtils {
     * Shows where a file is in a finder window
     * ## Examples:
     * showFileInFinder("~/dev/Element") -> shows the file or folder in finder
-    * - Parameter filePath: - Fixme: ⚠️️ 
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    static func showFileInFinder(_ filePath: String) {
       let expandedFilePath: String = filePath.tildePath

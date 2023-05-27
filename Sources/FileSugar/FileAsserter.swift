@@ -11,10 +11,12 @@ public final class FileAsserter {
       FileManager().fileExists(atPath: path)
    }
    /**
-    * Asserts if a file has content
+    * Asserts if a directory has files
+    * - Fixme: ⚠️️ rename to hasDirContent?
+    * - Fixme: ⚠️️ also add a method that asserts if a file has content?
     * ## Examples:
-    * FileAsserter.hasContent(filePath: NSString(string: "~/Desktop/del.txt").expandingTildeInPath)
-    * - Parameter filePath: - Fixme: ⚠️️
+    * FileAsserter.hasContent(filePath: NSString(string: "~/Desktop/").expandingTildeInPath)
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    public static func hasContent(filePath: String) -> Bool {
       FileParser.content(dirPath: filePath)?.isEmpty ?? false

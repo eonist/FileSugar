@@ -19,3 +19,5 @@ FileParser.content("~/Desktop/temp.txt".tildePath) // Output: test
 
 ### Todo:
 - Add test file in spm resource .bundle
+- Move FileStreamer into it's own repo again?
+- Add more examples to readme?

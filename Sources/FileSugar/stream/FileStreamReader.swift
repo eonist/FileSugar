@@ -58,7 +58,7 @@ extension FileStreamReader {
    /**
     * Read string
     */
-   static func read(filePath: String, start: UInt64, end: Int) throws -> String {
+   internal static func read(filePath: String, start: UInt64, end: Int) throws -> String {
       let data: Data = try FileStreamReader.read(filePath: filePath, startIndex: start, endIndex: end)
       guard let string = String(data: data, encoding: .utf8) else { throw NSError(domain: "FileStreamReader.read() - Unable to get string from data data.count: \(data.count)", code: 0) }
       return string
