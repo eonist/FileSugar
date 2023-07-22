@@ -10,7 +10,7 @@ public class FileAsserter {
       FileManager().fileExists(atPath: path)
    }
    /**
-    * Asserts if a file has content
+    * Asserts if a directory has content
     * ## Examples:
     * FileAsserter.hasContent(filePath: NSString(string: "~/Desktop/del.txt").expandingTildeInPath)
     */
