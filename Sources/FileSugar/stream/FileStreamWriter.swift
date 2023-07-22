@@ -5,13 +5,17 @@ import Foundation
 public final class FileStreamWriter {
    /**
     * Reads data from filepath
-    * - Important: ⚠️️ This method writes over the data that is already there (It does not insert)
+    * - Remark: This method writes over the data that is already there (It does not insert)
     * - Note: https://stackoverflow.com/questions/37981375/nsfilehandle-updateatpath-how-can-i-update-file-instead-of-overwriting
     * ## Examples:
     * let filePath:String = NSString(string: "~/Desktop/del.txt").expandingTildeInPath
     * guard let data:Data = ("black dog" as NSString).data(using: String.Encoding.utf8.rawValue) else {Swift.print("unable to create data");return}
     * FileStreamWriter.write(filePath: filePath, data: data, index: 0)
     * - Fixme: ⚠️️ Use Result type
+    * - Parameters:
+    *   - url: - Fixme: ⚠️️ add doc
+    *   - data: - Fixme: ⚠️️ add doc
+    *   - index: - Fixme: ⚠️️ add doc
     */
    public static func write(url: URL, data: Data, index: UInt64) throws {
       let fileExists: Bool = FileManager().fileExists(atPath: url.path)
@@ -19,7 +23,7 @@ public final class FileStreamWriter {
          do {
             try data.write(to: url, options: .atomic)/*Make the file, since it didn't exist*/
          } catch {
-            let str = "FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
+            let str = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
             throw NSError(domain: str, code: 0)
          }
       }
@@ -29,13 +33,14 @@ public final class FileStreamWriter {
          file.write(data)
          file.closeFile()
       } catch {
-         let str = "FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
+         let str = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
          throw NSError(domain: str, code: 0)
       }
    }
    /**
     * Empties a file
     * - Fixme: ⚠️️ Use Result type
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    public static func clear(filePath: String) throws {
       let url: URL = .init(fileURLWithPath: filePath)
@@ -44,7 +49,7 @@ public final class FileStreamWriter {
          file.truncateFile(atOffset: 0)
          file.closeFile()
       } catch {
-         let str = "Error: \(error) creating \(filePath)"
+         let str = "⚠️️ Error: \(error) creating \(filePath)"
          throw NSError(domain: str, code: 0)
       }
    }
@@ -56,6 +61,10 @@ extension FileStreamWriter {
    /**
     * Support for filePath
     * - Fixme: ⚠️️ Use Result type
+    * - Parameters:
+    *   - filePath: - Fixme: ⚠️️ add doc
+    *   - data: - Fixme: ⚠️️ add doc
+    *   - index: - Fixme: ⚠️️ add doc
     */
    public static func write(filePath: String, data: Data, index: UInt64) throws {
       let url: URL = .init(fileURLWithPath: filePath)

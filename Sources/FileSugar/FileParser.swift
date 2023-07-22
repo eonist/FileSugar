@@ -2,9 +2,10 @@ import Foundation
 /**
  * FileParser for iOS and macOs
  */
-public class FileParser {
+public final class FileParser {
    /**
     * Data for URL
+    * - Parameter url: - Fixme: ⚠️️ add doc
     */
    public static func data(url: URL) -> Data? {
       do {
@@ -18,6 +19,7 @@ public class FileParser {
     * Data for filePath (String)
     * ## Examples:
     * guard let data: Data = FileParser.data(filePath: filePath) else { Swift.print("no content"); fatalError("no content") }
+    * - Parameter filePath: - Fixme: ⚠️️ add doc
     */
    public static func data(filePath: String) -> Data? {
       do {
@@ -25,28 +27,30 @@ public class FileParser {
          let content: Data = try .init(contentsOf: url)
          return content
       } catch let error as NSError {
-         Swift.print("Error: \(error)")
+         Swift.print("⚠️️ Error: \(error)")
          return nil
       }
    }
    /**
     * Returns string content from a file at file location "path"
-    * - Parameter path: is the file path to the file in this format: (User/John/Desktop/test.txt) aka absolute
     * - Important: ⚠️️ Remember to expand the path with the .tildePath call, if it's a tilde path
-    * - Note: Supports syntax like this: /Users/John/Desktop/temp/../test.txt (the temp folder is excluded in this case)
+    * - Remark: Supports syntax like this: `/Users/John/Desktop/temp/../test.txt` (the temp folder is excluded in this case)
     * ## Examples:
     * let path = "//Users/<path>/someFile.xml"
     * var err: NSError?
     * let content = String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: &err)
     * ## Examples:
     * FileParser.content(dirPath: NSString(string: "~/Desktop/temp.txt").expandingTildeInPath)
+    * - Parameters:
+    *   - path: is the file path to the file in this format: `User/John/Desktop/test.txt` aka absolute
+    *   - encoding: - Fixme: ⚠️️ add doc
     */
    public static func content(filePath path: String, encoding: String.Encoding = .utf8) -> String? {
       do {
          let content: String = try .init(contentsOfFile: path, encoding: encoding)
          return content
       } catch  let error as NSError {
-         Swift.print("Error: \(error)")
+         Swift.print("⚠️️ Error: \(error)")
          return nil
       }
    }
@@ -54,14 +58,17 @@ public class FileParser {
     * FileParser.resourceContent("example","txt")
     * ## Examples:
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
+    * - Parameters:
+    *   - fileName: - Fixme: ⚠️️ add doc
+    *   - fileExtension: - Fixme: ⚠️️ add doc
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
       guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // example.txt not found!
       return content(filePath: filepath)
    }
    /**
-    * - Note: make sure the file exists with: FileAsserter.exists("some path here")
-    * - Parameter filePath: Can't be tildePath, must be absolute Users/John/...
+    * Make sure the file exists with: `FileAsserter.exists("some path here")`
+    * - Parameter filePath: Can't be tildePath, must be absolute `Users/John/...`
     * ## Examples:
     * let filePath: String = NSString(string: "~/Desktop/test.txt").expandingTildeInPath
     * let date: Date? = FileParser.modificationDate()
@@ -78,6 +85,7 @@ public class FileParser {
     * ## Examples:
     * let filePath = NSString(string: "~/Desktop/").expandingTildeInPath
     * FileParser.content(dirPath: filePath)
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    public static func content(dirPath path: String) -> [String]? {
       let fileManager = FileManager.default
@@ -111,10 +119,11 @@ import Cocoa
  */
 extension FileParser {
    /**
-    * Returns an xml instance comprised of the string content at location PARAM: path
+    * Returns an xml instance comprised of the string content at location path
     * ## Examples:
     * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
+    * - Parameter path: - Fixme: ⚠️️ add doc
     */
    public static func xml(_ path: String) -> XMLElement? {
       guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") }
@@ -122,12 +131,12 @@ extension FileParser {
          let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0))
          return xmlDoc.rootElement()
       } catch let error as NSError {
-         Swift.print("FileParser.xml Error: \(error.domain) path:\(path)")
+         Swift.print("⚠️️ FileParser.xml Error: \(error.domain) path:\(path)")
          return nil
       }
    }
    /**
-    * - Note: you have an extension for NSSavePanel in WinExtension: See NSSavePanel.initialize....
+    * You have an extension for `NSSavePanel` in WinExtension: See `NSSavePanel.initialize`....
     */
    private static func modalExample() {
       let myFileDialog: NSOpenPanel = .init() // Open modal panel

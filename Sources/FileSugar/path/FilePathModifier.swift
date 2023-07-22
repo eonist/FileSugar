@@ -2,10 +2,11 @@ import Foundation
 /**
  * There is also tildify which makes file paths user agnostic (~ instad of hardocded user)
  */
-public class FilePathModifier {
+public final class FilePathModifier {
    /**
     * ## Examples:
     * FilePathModifier.normalize("/Users/John/Desktop/temp/../test.txt".tildePath)///Users/John/Desktop/test.txt
+    * - Parameter urlStr: - Fixme: ⚠️️ add doc
     */
    public static func normalize(_ urlStr: String) -> String? {
       guard let url: URL = FilePathParser.path(urlStr) else { return nil }
@@ -17,7 +18,9 @@ public class FilePathModifier {
 import Cocoa
 extension FilePathModifier {
    /**
-    * - Parameter baseURL: must be absolute: "Users/John/Desktop/temp"
+    * - Parameters:
+    *   - baseURL: Must be absolute: "Users/John/Desktop/temp"
+    *   - filePath: Filepath
     * - Return asolute paths aka: Users/John/... (use path.tildify to make them user agnostic)
     * ## Examples:
     * Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp

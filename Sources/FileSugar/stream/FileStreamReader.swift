@@ -2,7 +2,7 @@ import Foundation
 /**
  * Reads data from a file (Continiously)
  */
-public class FileStreamReader {
+public final class FileStreamReader {
    /**
     * Reads data from filepath
     * ## Examples:
@@ -17,7 +17,6 @@ public class FileStreamReader {
          let file: FileHandle = try .init(forReadingFrom: url)
          file.seek(toFileOffset: startIndex)
          let length: Int = endIndex - Int(startIndex)
-//         Swift.print("length:  \(length)")
          let databuffer = file.readData(ofLength: length)
          file.closeFile()
          return databuffer
@@ -26,13 +25,12 @@ public class FileStreamReader {
       }
    }
 }
-//let data = fileHandle?.readDataToEndOfFile()
 extension FileStreamReader {
    /**
     * Returns filesize for a filePath
     * ## Examples:
     * let fileSize = FileStreamReader.fileSize(filePath: filePath)
-    * - Note: same as doing `data.count`
+    * - Remark: same as doing `data.count`
     */
    public static func fileSize(filePath: String) throws -> UInt64 {
       let fileUrl = URL(fileURLWithPath: filePath)
@@ -45,7 +43,7 @@ extension FileStreamReader {
          return fileSize
       }
       catch let error as NSError {
-         throw NSError(domain: ("Something went wrong: \(error)"), code: 0)
+         throw NSError(domain: ("⚠️️ Something went wrong: \(error)"), code: 0)
       }
    }
 }
@@ -60,7 +58,7 @@ extension FileStreamReader {
    /**
     * Read string
     */
-   static func read(filePath: String, start: UInt64, end: Int) throws -> String {
+   internal static func read(filePath: String, start: UInt64, end: Int) throws -> String {
       let data: Data = try FileStreamReader.read(filePath: filePath, startIndex: start, endIndex: end)
       guard let string = String(data: data, encoding: .utf8) else { throw NSError(domain: "FileStreamReader.read() - Unable to get string from data data.count: \(data.count)", code: 0) }
       return string
