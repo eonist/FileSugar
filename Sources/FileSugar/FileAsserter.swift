@@ -5,18 +5,19 @@ public final class FileAsserter {
     * Asserts if a file or folder exists
     * ## Examples:
     * FileAsserter.exists(path: NSString(string: "~/Desktop/del.txt").expandingTildeInPath) // true or false (remember to expand the tildePath)
-    * - Parameter path: - Fixme: ⚠️️
+    * - Parameter path: The path of the file or folder to check for existence
+    * - Returns: A boolean value indicating whether the file or folder exists
     */
    public static func exists(path: String) -> Bool {
       FileManager().fileExists(atPath: path)
    }
+   
    /**
     * Asserts if a directory has files
-    * - Fixme: ⚠️️ rename to hasDirContent?
-    * - Fixme: ⚠️️ also add a method that asserts if a file has content?
     * ## Examples:
     * FileAsserter.hasContent(filePath: NSString(string: "~/Desktop/").expandingTildeInPath)
-    * - Parameter filePath: - Fixme: ⚠️️ add doc
+    * - Parameter filePath: The path of the directory to check for files
+    * - Returns: A boolean value indicating whether the directory has files
     */
    public static func hasContent(filePath: String) -> Bool {
       FileParser.content(dirPath: filePath)?.isEmpty ?? false

@@ -1,34 +1,36 @@
 import Foundation
 /**
- * FileParser for iOS and macOs
+ * The `FileParser` class provides utility methods for working with files and directories.
+ * It includes methods for reading and writing file contents, getting file attributes, and more.
+ * All methods are static, so there is no need to create an instance of this class to use them.
  */
 public final class FileParser {
    /**
-    * Data for URL
-    * - Parameter url: - Fixme: ⚠️️ add doc
+    * Get data for URL
+    * - Parameter url: The URL of the file to get data from
+    * - Returns: The data of the file at the specified URL, or nil if an error occurred
     */
    public static func data(url: URL) -> Data? {
       do {
-         let content: Data = try .init(contentsOf: url)
-         return content
+         let content: Data = try .init(contentsOf: url) // read the contents of the file at the specified URL
+         return content // return the contents of the file
       } catch {
-         return nil
+         return nil // return nil if an error occurred
       }
    }
    /**
-    * Data for filePath (String)
-    * ## Examples:
-    * guard let data: Data = FileParser.data(filePath: filePath) else { Swift.print("no content"); fatalError("no content") }
-    * - Parameter filePath: - Fixme: ⚠️️ add doc
+    * Get data for file at a specific path
+    * - Parameter filePath: The path of the file to get data from
+    * - Returns: The data of the file at the specified path, or nil if an error occurred
     */
    public static func data(filePath: String) -> Data? {
       do {
-         let url: URL = .init(fileURLWithPath: filePath)
-         let content: Data = try .init(contentsOf: url)
-         return content
+         let url: URL = .init(fileURLWithPath: filePath) // create a URL from the file path
+         let content: Data = try .init(contentsOf: url) // read the contents of the file at the specified path
+         return content // return the contents of the file
       } catch let error as NSError {
-         Swift.print("⚠️️ Error: \(error)")
-         return nil
+         Swift.print("⚠️️ Error: \(error)") // print an error message if an error occurred
+         return nil // return nil if an error occurred
       }
    }
    /**
@@ -43,73 +45,81 @@ public final class FileParser {
     * FileParser.content(dirPath: NSString(string: "~/Desktop/temp.txt").expandingTildeInPath)
     * - Parameters:
     *   - path: is the file path to the file in this format: `User/John/Desktop/test.txt` aka absolute
-    *   - encoding: - Fixme: ⚠️️ add doc
+    *   - encoding: The encoding to use when reading the file (default is UTF-8)
+    * - Returns: The string content of the file at the specified path, or nil if an error occurred
     */
    public static func content(filePath path: String, encoding: String.Encoding = .utf8) -> String? {
       do {
-         let content: String = try .init(contentsOfFile: path, encoding: encoding)
-         return content
+         let content: String = try .init(contentsOfFile: path, encoding: encoding) // read the contents of the file at the specified path with the specified encoding
+         return content // return the contents of the file
       } catch  let error as NSError {
-         Swift.print("⚠️️ Error: \(error)")
-         return nil
+         Swift.print("⚠️️ Error: \(error)") // print an error message if an error occurred
+         return nil // return nil if an error occurred
       }
    }
    /**
-    * FileParser.resourceContent("example","txt")
+    * Get the string content of a resource file in the main bundle
     * ## Examples:
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
     * - Parameters:
-    *   - fileName: - Fixme: ⚠️️ add doc
-    *   - fileExtension: - Fixme: ⚠️️ add doc
+    *   - fileName: The name of the resource file to get the content of
+    *   - fileExtension: The extension of the resource file to get the content of
+    * - Returns: The string content of the resource file, or nil if the file was not found or an error occurred
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
-      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // example.txt not found!
-      return content(filePath: filepath)
+      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // get the file path of the resource file with the specified name and extension in the main bundle
+      return content(filePath: filepath) // return the string content of the resource file
    }
    /**
-    * Make sure the file exists with: `FileAsserter.exists("some path here")`
-    * - Parameter filePath: Can't be tildePath, must be absolute `Users/John/...`
+    * Get the modification date of a file at a specific path
+    * - Remark: Make sure the file exists with: `FileAsserter.exists("some path here")`
+    * - Parameter filePath: The absolute path of the file to get the modification date of
     * ## Examples:
     * let filePath: String = NSString(string: "~/Desktop/test.txt").expandingTildeInPath
     * let date: Date? = FileParser.modificationDate()
+    * - Returns: The modification date of the file at the specified path, or nil if an error occurred
     */
    public static func modificationDate(_ filePath: String) -> NSDate? {
-      let fileURL: NSURL = .init(fileURLWithPath: filePath)
-      guard let attributes = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else { return nil }
-      guard let modificationDate: NSDate = attributes[URLResourceKey.contentModificationDateKey] as? NSDate else { return nil }
-      return modificationDate
+      let fileURL: NSURL = .init(fileURLWithPath: filePath) // create a file URL from the specified file path
+      guard let attributes = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else { return nil } // get the resource values for the file URL, including the modification date
+      guard let modificationDate: NSDate = attributes[URLResourceKey.contentModificationDateKey] as? NSDate else { return nil } // get the modification date from the resource values
+      return modificationDate // return the modification date of the file
    }
    /**
-    * Returns paths of content in a dir
-    * - Note: This is the root folder of the main Harddrive on your computer
+    * Returns paths of content in a directory
+    * - Note: This method returns the paths of all files and directories in the specified directory
+    * - Remark: This is the root folder of the main hard drive on your computer
     * ## Examples:
     * let filePath = NSString(string: "~/Desktop/").expandingTildeInPath
     * FileParser.content(dirPath: filePath)
-    * - Parameter path: - Fixme: ⚠️️ add doc
+    * - Parameter path: The path of the directory to get the contents of
+    * - Returns: An array of strings representing the paths of all files and directories in the specified directory, or nil if an error occurred
     */
    public static func content(dirPath path: String) -> [String]? {
-      let fileManager = FileManager.default
+      let fileManager = FileManager.default // create a file manager instance
       do {
-         let files = try fileManager.contentsOfDirectory(atPath: path)
-         return files
-      }catch let error as NSError {
-         print("FileParser.content Error: \(error)")
-         return nil
+         let files = try fileManager.contentsOfDirectory(atPath: path) // get the contents of the directory at the specified path
+         return files // return the paths of all files and directories in the specified directory
+      } catch let error as NSError {
+         Swift.print("⚠️️ FileParser.content Error: \(error)") // print an error message if an error occurred
+         return nil // return nil if an error occurred
       }
    }
    /**
     * Returns temporary directory path
+    * - Returns: The path of the temporary directory
     */
    public static var tempPath: String {
-      NSTemporaryDirectory() as String
+      NSTemporaryDirectory() as String // get the path of the temporary directory
    }
+
    /**
     * Returns the current directory path
-    *
+    * - Returns: The path of the current directory
     */
    public static var curDir: String {
-      let fileManager = FileManager.default
-      return fileManager.currentDirectoryPath
+      let fileManager = FileManager.default // create a file manager instance
+      return fileManager.currentDirectoryPath // get the path of the current directory
    }
 }
 #if os(OSX)
@@ -123,27 +133,29 @@ extension FileParser {
     * ## Examples:
     * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
-    * - Parameter path: - Fixme: ⚠️️ add doc
+    * - Parameter path: The path of the file to get the XML content from
+    * - Returns: An XMLElement instance representing the root element of the XML content at the specified path, or nil if an error occurred
     */
    public static func xml(_ path: String) -> XMLElement? {
-      guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") }
+      guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") } // get the string content of the file at the specified path
       do {
-         let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0))
-         return xmlDoc.rootElement()
+         let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0)) // create an XML document instance from the string content
+         return xmlDoc.rootElement() // return the root element of the XML document
       } catch let error as NSError {
-         Swift.print("⚠️️ FileParser.xml Error: \(error.domain) path:\(path)")
-         return nil
+         Swift.print("⚠️️ FileParser.xml Error: \(error.domain) path:\(path)") // print an error message if an error occurred
+         return nil // return nil if an error occurred
       }
    }
    /**
-    * You have an extension for `NSSavePanel` in WinExtension: See `NSSavePanel.initialize`....
+    * Example method that demonstrates how to use an NSOpenPanel to choose a file and get its content
+    * - Remark: This method is an example and should be modified to fit your specific use case
     */
    private static func modalExample() {
-      let myFileDialog: NSOpenPanel = .init() // Open modal panel
-      myFileDialog.runModal()
-      let thePath = myFileDialog.url?.path // Get the path to the file chosen in the NSOpenPanel
-      if let thePath = thePath, let theContent = FileParser.content(filePath: thePath) { // Make sure that a path was chosen
-          Swift.print("theContent: " + "\(theContent)")
+      let myFileDialog: NSOpenPanel = .init() // create an NSOpenPanel instance
+      myFileDialog.runModal() // open the modal panel to choose a file
+      let thePath = myFileDialog.url?.path // get the path to the file chosen in the NSOpenPanel
+      if let thePath = thePath, let theContent = FileParser.content(filePath: thePath) { // make sure that a path was chosen and get the content of the file
+         Swift.print("theContent: " + "\(theContent)") // print the content of the file
       }
    }
 }

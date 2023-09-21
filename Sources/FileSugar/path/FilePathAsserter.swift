@@ -1,36 +1,45 @@
 import Foundation
 
 public final class FilePathAsserter {
-   /**
-    * Tests if a path is absolute /User/John/ or relative : ../../ or styles/design/
-    * - Parameters:
-    *   - path: - Fixme: ⚠️️ add doc
-    *   - pathSeperator: - Fixme: ⚠️️ add doc
-    */
+    /**
+     * Tests if a path is absolute or relative
+     * - Parameter path: The path to test
+     * - Parameter pathSeperator: The path separator to use (default is "/")
+     * - Returns: True if the path is absolute, false if it is relative
+     */
     public static func isAbsolute(_ path: String, pathSeperator: String = "/") -> Bool {
-        path.hasPrefix(pathSeperator)
+        // Check if the path starts with the path separator
+        return path.hasPrefix(pathSeperator)
     }
-   /**
-    * - Fixme: ⚠️️ Alternate name: hasBacklash ?
-    * - Parameter path: - Fixme: ⚠️️ add doc
-    */
+    
+    /**
+     * Tests if a path contains a relative path (i.e. "../")
+     * - Parameter path: The path to test
+     * - Returns: True if the path contains a relative path, false otherwise
+     */
     public static func isBacklash(_ path: String) -> Bool {
-        path.hasPrefix("../")
+        // Check if the path starts with "../"
+        return path.hasPrefix("../")
     }
-   /**
-    * "Naive approach"
-    * - Parameters:
-    *   - path: - Fixme: ⚠️️ add doc
-    *   - pathSeperator: - Fixme: ⚠️️ add doc
-    */
+    
+    /**
+     * Tests if a path is a file path (i.e. starts with a path separator or "../")
+     * - Parameter path: The path to test
+     * - Parameter pathSeperator: The path separator to use (default is "/")
+     * - Returns: True if the path is a file path, false otherwise
+     */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {
-        path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
+        // Check if the path starts with the path separator or "../"
+        return path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
     }
-   /**
-    * Asserts if a path is a type of tilde path
-    * - Parameter path: - Fixme: ⚠️️
-    */
+    
+    /**
+     * Tests if a path is a tilde path (i.e. starts with "~")
+     * - Parameter path: The path to test
+     * - Returns: True if the path is a tilde path, false otherwise
+     */
     public static func isTildePath(_ path: String) -> Bool {
-        path.hasPrefix("~")
+        // Check if the path starts with "~"
+        return path.hasPrefix("~")
     }
 }
