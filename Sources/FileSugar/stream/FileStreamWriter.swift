@@ -24,10 +24,8 @@ public final class FileStreamWriter {
    public static func write(url: URL, data: Data, index: UInt64) throws {
       // Check if the file already exists
       let fileExists: Bool = FileManager().fileExists(atPath: url.path)
-      
       if fileExists == false {
-         // If the file does not exist, create it and write the data to it
-         do {
+         do { // If the file does not exist, create it and write the data to it
             try data.write(to: url, options: .atomic)
          } catch {
             // If an error occurs, throw an NSError with a descriptive message
@@ -89,9 +87,7 @@ extension FileStreamWriter {
     * - Throws: An error if the file cannot be written to
     */
    public static func write(filePath: String, data: Data, index: UInt64) throws {
-      // Create a URL from the file path
-      let url: URL = .init(fileURLWithPath: filePath)
-      // Call the write method with the URL
-      try write(url: url, data: data, index: index)
+      let url: URL = .init(fileURLWithPath: filePath) // Create a URL from the file path
+      try write(url: url, data: data, index: index) // Call the write method with the URL
    }
 }

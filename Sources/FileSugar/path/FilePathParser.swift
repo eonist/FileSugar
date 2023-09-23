@@ -10,10 +10,9 @@ public final class FilePathParser {
      * let appDocPath = FilePathParser.appDocPath() // "/Users/James/Documents"
      */
     public static func appDocPath() -> String? {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        return paths.first
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) // Get an array of paths to the user's document directory
+        return paths.first // Return the first path in the array (which should be the document directory)
     }
-    
     /**
      * Parses a string path into a URL object
      * - Parameter stringPath: The string path to parse
@@ -22,9 +21,8 @@ public final class FilePathParser {
      * let url = FilePathParser.path("file:///Users/Me/Desktop/Doc.txt") // NSURL object
      */
     public static func path(_ stringPath: String) -> URL? {
-        URL(string: stringPath)
+        URL(string: stringPath) // Create a URL from the given string path
     }
-    
     /**
      * Converts a URL object to a string path
      * - Parameter url: The URL object to convert
@@ -33,9 +31,8 @@ public final class FilePathParser {
      * let path = FilePathParser.path(NSURL("file:///Users/Me/Desktop/Doc.txt")) // "/Users/Me/Desktop/Doc.txt"
      */
     public static func path(_ url: URL) -> String {
-        url.path
+        url.path // Get the path component of the URL as a string
     }
-    
     /**
      * Converts a URL object to a string path
      * - Parameter path: The URL object to convert
@@ -50,9 +47,8 @@ public final class FilePathParser {
      * Returns the path to the user's home directory.
      */
     public static func userHomePath() -> String {
-        NSHomeDirectory()
+        NSHomeDirectory() // Get the path to the user's home directory
     }
-    
     /**
      * Returns the file name of the given URL.
      *
@@ -68,9 +64,10 @@ public final class FilePathParser {
      * ```
      */
     public static func fileName(_ fileURL: URL, _ withExtension: Bool = true) -> String {
+        // If withExtension is true, return the last path component of the URL (including the file extension)
+        // Otherwise, return the last path component of the URL without the file extension
         withExtension ? fileURL.absoluteURL.lastPathComponent : fileURL.absoluteURL.deletingPathExtension().lastPathComponent
     }
-    
     /**
      * Returns the file name of the file at the given path.
      *
@@ -85,10 +82,9 @@ public final class FilePathParser {
      * ```
      */
     public static func fileName(path filePath: String, withExtension: Bool = true) -> String? {
-        guard let url: URL = path(filePath) else { return nil }
-        return fileName(url, withExtension)
-    }
-    
+        guard let url: URL = path(filePath) else { return nil } // Get the URL from the file path
+        return fileName(url, withExtension) // Get the file name from the URL and return it
+    } 
     /**
      * Returns the directory of the given file URL.
      *
@@ -102,9 +98,10 @@ public final class FilePathParser {
      * ```
      */
     public static func directory(_ fileURL: URL) -> String {
-        fileURL.absoluteURL.deletingPathExtension().absoluteString
+        fileURL.absoluteURL // Get the absolute URL of the file URL
+            .deletingPathExtension() // Delete the file extension from the URL
+            .absoluteString // Convert the URL back to a string
     }
-    
     /**
      * Returns the path to the project's resource folder.
      *
@@ -114,9 +111,8 @@ public final class FilePathParser {
      * ```
      */
     public static var resourcePath: String? {
-        Bundle.main.resourcePath
+        Bundle.main.resourcePath // Get the path to the main bundle's resource directory
     }
-    
     /**
      * Returns the file extension of the file at the given path.
      *
@@ -129,7 +125,7 @@ public final class FilePathParser {
      * ```
      */
     public static func fileExtension(_ filePath: String) -> String {
-        NSString(string: filePath).pathExtension
+        NSString(string: filePath).pathExtension // Get the file extension from the file path as an NSString
     }
 }
 /**
@@ -148,7 +144,7 @@ extension FilePathParser {
     * let fileURL = "file:///Users/username/Documents/example.txt" let fileName = FilePathParser.fileName(fileURL: fileURL) // fileName == "example.txt"
     */
    public static func fileName(fileURL: String, _ withExtension: Bool = true) -> String? {
-      guard let path = path(fileURL) else { return nil }
-      return fileName(path, withExtension)
+    guard let path = path(fileURL) else { return nil } // Get the path from the file URL
+    return fileName(path, withExtension) // Get the file name from the path and return it
    }
 }

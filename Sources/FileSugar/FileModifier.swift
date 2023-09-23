@@ -21,7 +21,6 @@ public final class FileModifier {
          return false // return false if the file move operation failed
       }
    }
-
    /**
     * Copies a file to another location
     * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path

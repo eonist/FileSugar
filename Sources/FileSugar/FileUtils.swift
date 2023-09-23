@@ -1,6 +1,5 @@
 #if os(OSX)
 import Cocoa
-
 /**
  * A utility class for working with files on macOS
  */
@@ -14,7 +13,6 @@ class FileUtils {
    static func showFileInFinder(_ filePath: String) {
       // Expand the tilde in the file path to the user's home directory
       let expandedFilePath: String = filePath.tildePath
-      
       // Use the shared NSWorkspace instance to select the file or folder in Finder
       NSWorkspace.shared.selectFile(nil, inFileViewerRootedAtPath: expandedFilePath)
    }

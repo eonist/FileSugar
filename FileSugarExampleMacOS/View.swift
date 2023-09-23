@@ -24,7 +24,9 @@ extension View {
     * Testing getting content from folder
     */
    func test1() {
+      // Call the content method of the FileParser class with the expanded tilde path
       let result = FileParser.content(dirPath: NSString(string: "~/Desktop/").expandingTildeInPath)
+      // Print the count of the result array
       Swift.print("result.count:  \(String(describing: result?.count))")
       result?.forEach {
          Swift.print("$0:  \($0)") // prints all the files on the desktop folder

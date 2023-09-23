@@ -8,8 +8,7 @@ public final class FilePathAsserter {
      * - Returns: True if the path is absolute, false if it is relative
      */
     public static func isAbsolute(_ path: String, pathSeperator: String = "/") -> Bool {
-        // Check if the path starts with the path separator
-        return path.hasPrefix(pathSeperator)
+         path.hasPrefix(pathSeperator) // Check if the path starts with the path separator
     }
     
     /**
@@ -18,10 +17,8 @@ public final class FilePathAsserter {
      * - Returns: True if the path contains a relative path, false otherwise
      */
     public static func isBacklash(_ path: String) -> Bool {
-        // Check if the path starts with "../"
-        return path.hasPrefix("../")
+         path.hasPrefix("../") // Check if the path starts with "../"
     }
-    
     /**
      * Tests if a path is a file path (i.e. starts with a path separator or "../")
      * - Parameter path: The path to test
@@ -30,7 +27,7 @@ public final class FilePathAsserter {
      */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {
         // Check if the path starts with the path separator or "../"
-        return path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
+         path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
     }
     
     /**
@@ -39,7 +36,6 @@ public final class FilePathAsserter {
      * - Returns: True if the path is a tilde path, false otherwise
      */
     public static func isTildePath(_ path: String) -> Bool {
-        // Check if the path starts with "~"
-        return path.hasPrefix("~")
+         path.hasPrefix("~") // Check if the path starts with "~"
     }
 }

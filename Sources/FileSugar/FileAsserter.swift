@@ -9,7 +9,10 @@ public final class FileAsserter {
     * - Returns: A boolean value indicating whether the file or folder exists
     */
    public static func exists(path: String) -> Bool {
-      FileManager().fileExists(atPath: path)
+      // Create a new instance of the FileManager class
+      FileManager()
+         // Check if a file exists at the given path
+         .fileExists(atPath: path)
    }
    
    /**
@@ -20,6 +23,9 @@ public final class FileAsserter {
     * - Returns: A boolean value indicating whether the directory has files
     */
    public static func hasContent(filePath: String) -> Bool {
-      FileParser.content(dirPath: filePath)?.isEmpty ?? false
+      // Call the content method of the FileParser class with the given directory path
+      FileParser.content(dirPath: filePath)?
+         // Check if the returned content is empty
+         .isEmpty ?? false
    }
 }

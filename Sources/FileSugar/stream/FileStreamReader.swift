@@ -19,23 +19,12 @@ public final class FileStreamReader {
     */
    public static func read(url: URL, startIndex: UInt64, endIndex: Int) throws -> Data {
       do {
-         // Open the file at the given URL for reading
-         let file: FileHandle = try .init(forReadingFrom: url)
-         
-         // Seek to the starting byte offset
-         file.seek(toFileOffset: startIndex)
-         
-         // Calculate the length of the data to read
-         let length: Int = endIndex - Int(startIndex)
-         
-         // Read the data from the file
-         let databuffer = file.readData(ofLength: length)
-         
-         // Close the file
-         file.closeFile()
-         
-         // Return the data read from the file
-         return databuffer
+         let file: FileHandle = try .init(forReadingFrom: url) // Open the file at the given URL for reading
+         file.seek(toFileOffset: startIndex) // Seek to the starting byte offset
+         let length: Int = endIndex - Int(startIndex) // Calculate the length of the data to read
+         let databuffer = file.readData(ofLength: length) // Read the data from the file
+         file.closeFile() // Close the file
+         return databuffer // Return the data read from the file
       } catch {
          // If an error occurs, throw an NSError with a descriptive message
          throw NSError(domain: ("Error: \(error) reading \(url.path)"), code: 0)
@@ -56,21 +45,16 @@ extension FileStreamReader {
    public static func getFileSize(filePath: String) throws -> UInt64 {
       // Create a URL from the file path
       let fileUrl = URL(fileURLWithPath: filePath)
-      
       // Get the default file manager
       let fileManager = FileManager.default
-      
       do {
          // Get the attributes of the file at the URL
          let attributes = try fileManager.attributesOfItem(atPath: (fileUrl.path))
-         
          // Get the file size from the attributes dictionary
          var fileSize = attributes[FileAttributeKey.size] as! UInt64
-         
          // Alternatively, get the file size from the attributes dictionary using the fileSize() method
          let dict = attributes as NSDictionary
          fileSize = dict.fileSize()
-         
          // Return the file size
          return fileSize
       } catch let error as NSError {
@@ -81,30 +65,26 @@ extension FileStreamReader {
 }
 extension FileStreamReader {
    /**
- * Support for filePath
- */
-public static func read(filePath: String, startIndex: UInt64, endIndex: Int) throws -> Data {
-    // Create a URL from the file path
-    let url: URL = .init(fileURLWithPath: filePath)
-    
-    // Call the read method with the URL
-    return try read(url: url, startIndex: startIndex, endIndex: endIndex)
-}
-
-/**
- * Read string
- */
-internal static func read(filePath: String, start: UInt64, end: Int) throws -> String {
-    // Read the data from the file at the given path
-    let data: Data = try FileStreamReader.read(filePath: filePath, startIndex: start, endIndex: end)
-    
-    // Convert the data to a string using UTF-8 encoding
-    guard let string = String(data: data, encoding: .utf8) else {
-        // If the data cannot be converted to a string, throw an NSError with a descriptive message
-        throw NSError(domain: "FileStreamReader.read() - Unable to get string from data data.count: \(data.count)", code: 0)
-    }
-    
-    // Return the string
-    return string
-}
+   * Support for filePath
+   */
+   public static func read(filePath: String, startIndex: UInt64, endIndex: Int) throws -> Data {
+      // Create a URL from the file path
+      let url: URL = .init(fileURLWithPath: filePath)
+      // Call the read method with the URL
+      return try read(url: url, startIndex: startIndex, endIndex: endIndex)
+   }
+   /**
+   * Read string
+   */
+   internal static func read(filePath: String, start: UInt64, end: Int) throws -> String {
+      // Read the data from the file at the given path
+      let data: Data = try FileStreamReader.read(filePath: filePath, startIndex: start, endIndex: end)
+      // Convert the data to a string using UTF-8 encoding
+      guard let string = String(data: data, encoding: .utf8) else {
+         // If the data cannot be converted to a string, throw an NSError with a descriptive message
+         throw NSError(domain: "FileStreamReader.read() - Unable to get string from data data.count: \(data.count)", code: 0)
+      }
+      // Return the string
+      return string
+   }
 }
