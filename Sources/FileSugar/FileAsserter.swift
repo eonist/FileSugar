@@ -14,7 +14,7 @@ public final class FileAsserter {
          // Check if a file exists at the given path
          .fileExists(atPath: path)
    }
-   
+
    /**
     * Asserts if a directory has files
     * ## Examples:

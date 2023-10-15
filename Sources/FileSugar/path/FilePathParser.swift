@@ -84,7 +84,7 @@ public final class FilePathParser {
     public static func fileName(path filePath: String, withExtension: Bool = true) -> String? {
         guard let url: URL = path(filePath) else { return nil } // Get the URL from the file path
         return fileName(url, withExtension) // Get the file name from the URL and return it
-    } 
+    }
     /**
      * Returns the directory of the given file URL.
      *
