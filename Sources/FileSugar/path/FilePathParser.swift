@@ -10,7 +10,7 @@ public final class FilePathParser {
      * let appDocPath = FilePathParser.appDocPath() // "/Users/James/Documents"
      */
     public static func appDocPath() -> String? {
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) // Get an array of paths to the user's document directory
+        let paths: [String] = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) // Get an array of paths to the user's document directory
         return paths.first // Return the first path in the array (which should be the document directory)
     }
     /**
@@ -144,7 +144,7 @@ extension FilePathParser {
     * let fileURL = "file:///Users/username/Documents/example.txt" let fileName = FilePathParser.fileName(fileURL: fileURL) // fileName == "example.txt"
     */
    public static func fileName(fileURL: String, _ withExtension: Bool = true) -> String? {
-    guard let path = path(fileURL) else { return nil } // Get the path from the file URL
+    guard let path: URL = path(fileURL) else { return nil } // Get the path from the file URL
     return fileName(path, withExtension) // Get the file name from the path and return it
    }
 }

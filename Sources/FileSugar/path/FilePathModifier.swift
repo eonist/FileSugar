@@ -37,14 +37,14 @@ extension FilePathModifier {
       case FilePathAsserter.isTildePath(filePath): // is tilde path
          return filePath.tildePath
       case FilePathAsserter.isBacklash(filePath): // is relative path
-         let baseURL = baseURL.hasSuffix("/") ? baseURL : baseURL + "/"
+         let baseURL: String = baseURL.hasSuffix("/") ? baseURL : baseURL + "/"
          return FilePathModifier.normalize(baseURL + filePath) // returns absolute path
       case FileAsserter.exists(path: filePath): // absolute path that exists
          return filePath
       case FilePathAsserter.isAbsolute(filePath): // absolute but doesn't exist
          return baseURL + filePath
       default: // must be just a file name
-         let baseURL = baseURL.hasSuffix("/") ? baseURL : baseURL + "/"
+         let baseURL: String = baseURL.hasSuffix("/") ? baseURL : baseURL + "/"
          return baseURL + filePath
       }
    }

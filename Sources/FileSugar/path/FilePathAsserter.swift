@@ -10,7 +10,6 @@ public final class FilePathAsserter {
     public static func isAbsolute(_ path: String, pathSeperator: String = "/") -> Bool {
          path.hasPrefix(pathSeperator) // Check if the path starts with the path separator
     }
-
     /**
      * Tests if a path contains a relative path (i.e. "../")
      * - Parameter path: The path to test
@@ -29,7 +28,6 @@ public final class FilePathAsserter {
         // Check if the path starts with the path separator or "../"
          path.hasPrefix(pathSeperator) || path.hasPrefix(".." + pathSeperator)
     }
-
     /**
      * Tests if a path is a tilde path (i.e. starts with "~")
      * - Parameter path: The path to test

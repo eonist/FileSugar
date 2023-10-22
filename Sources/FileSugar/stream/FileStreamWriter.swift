@@ -29,7 +29,7 @@ public final class FileStreamWriter {
             try data.write(to: url, options: .atomic)
          } catch {
             // If an error occurs, throw an NSError with a descriptive message
-            let str = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
+            let str: String = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
             throw NSError(domain: str, code: 0)
          }
       }
@@ -44,7 +44,7 @@ public final class FileStreamWriter {
          file.closeFile()
       } catch {
          // If an error occurs, throw an NSError with a descriptive message
-         let str = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
+         let str: String = "⚠️️ FileStreamWriter.write() - Error: \(error.localizedDescription) creating \(url.path)"
          throw NSError(domain: str, code: 0)
       }
    }
@@ -68,7 +68,7 @@ public final class FileStreamWriter {
          file.closeFile()
       } catch {
          // If an error occurs, throw an NSError with a descriptive message
-         let str = "⚠️️ Error: \(error) creating \(filePath)"
+         let str: String = "⚠️️ Error: \(error) creating \(filePath)"
          throw NSError(domain: str, code: 0)
       }
    }

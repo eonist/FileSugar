@@ -10,7 +10,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully moved
     */
    @discardableResult public static func move(_ fromURL: String, toURL: String) -> Bool {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = FileManager.default // create a file manager instance
       let fromURL: URL = .init(fileURLWithPath: fromURL) // create a URL from the source file path
       let toURL: URL = .init(fileURLWithPath: toURL) // create a URL from the destination file path
       do {
@@ -30,7 +30,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully copied
     */
    @discardableResult public static func copy(_ fromURL: String, toURL: String) -> Bool {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = FileManager.default // create a file manager instance
       let fromURL: URL = .init(fileURLWithPath: fromURL) // create a URL from the source file path
       let toURL: URL = .init(fileURLWithPath: toURL) // create a URL from the destination file path
       do {
@@ -105,7 +105,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully deleted
     */
    @discardableResult public static func delete(_ path: String) -> Bool {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = .default // create a file manager instance
       do {
          try fileManager.removeItem(atPath: path) // delete the file at the specified path
          return true // return true if the file was successfully deleted
@@ -123,7 +123,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully renamed
     */
    @discardableResult public static func rename(_ fromURL: String, toURL: String) -> Bool {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = .default // create a file manager instance
       do {
          try fileManager.moveItem(atPath: fromURL, toPath: toURL) // rename the file at the specified path to the new path
          return true // return true if the file was successfully renamed
@@ -138,7 +138,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the folder was successfully created
     */
    @discardableResult public static func createFolder(_ path: String) -> Bool {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = .default // create a file manager instance
       do {
          try fileManager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: nil) // create the folder at the specified path, including any intermediate directories that don't exist
          return true // return true if the folder was successfully created
@@ -167,7 +167,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the text was successfully appended to the file
     */
    @discardableResult public static func append(_ path: String, text: String, index: Int) -> Bool {
-      guard let os = OutputStream(toFileAtPath: path, append: true) else { return false } // create an output stream to the file at the specified path
+      guard let os: OutputStream = .init(toFileAtPath: path, append: true) else { return false } // create an output stream to the file at the specified path
       os.open() // open the output stream
       os.write(text, maxLength: index) // write the text to the output stream at the specified index
       os.close() // close the output stream

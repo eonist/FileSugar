@@ -67,7 +67,9 @@ public final class FileParser {
     * - Returns: The string content of the resource file, or nil if the file was not found or an error occurred
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
-      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { return nil } // get the file path of the resource file with the specified name and extension in the main bundle
+      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { 
+         return nil 
+      } // get the file path of the resource file with the specified name and extension in the main bundle
       return content(filePath: filepath) // return the string content of the resource file
    }
    /**
@@ -81,7 +83,9 @@ public final class FileParser {
     */
    public static func modificationDate(_ filePath: String) -> NSDate? {
       let fileURL: NSURL = .init(fileURLWithPath: filePath) // create a file URL from the specified file path
-      guard let attributes = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else { return nil } // get the resource values for the file URL, including the modification date
+      guard let attributes: [URLResourceKey: Any] = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else { 
+         return nil 
+      } // get the resource values for the file URL, including the modification date
       guard let modificationDate: NSDate = attributes[URLResourceKey.contentModificationDateKey] as? NSDate else { return nil } // get the modification date from the resource values
       return modificationDate // return the modification date of the file
    }
@@ -96,9 +100,9 @@ public final class FileParser {
     * - Returns: An array of strings representing the paths of all files and directories in the specified directory, or nil if an error occurred
     */
    public static func content(dirPath path: String) -> [String]? {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = .default // create a file manager instance
       do {
-         let files = try fileManager.contentsOfDirectory(atPath: path) // get the contents of the directory at the specified path
+         let files: [String] = try fileManager.contentsOfDirectory(atPath: path) // get the contents of the directory at the specified path
          return files // return the paths of all files and directories in the specified directory
       } catch let error as NSError {
          Swift.print("⚠️️ FileParser.content Error: \(error)") // print an error message if an error occurred
@@ -118,7 +122,7 @@ public final class FileParser {
     * - Returns: The path of the current directory
     */
    public static var curDir: String {
-      let fileManager = FileManager.default // create a file manager instance
+      let fileManager: FileManager = .default // create a file manager instance
       return fileManager.currentDirectoryPath // get the path of the current directory
    }
 }
@@ -151,10 +155,11 @@ extension FileParser {
     * - Remark: This method is an example and should be modified to fit your specific use case
     */
    private static func modalExample() {
-      let myFileDialog: NSOpenPanel = .init() // create an NSOpenPanel instance
-      myFileDialog.runModal() // open the modal panel to choose a file
-      let thePath = myFileDialog.url?.path // get the path to the file chosen in the NSOpenPanel
-      if let thePath = thePath, let theContent = FileParser.content(filePath: thePath) { // make sure that a path was chosen and get the content of the file
+      let myFileDialog: NSOpenPanel = .init() // Create an NSOpenPanel instance
+      myFileDialog.runModal() // Open the modal panel to choose a file
+      let thePath: String? = myFileDialog.url?.path // get the path to the file chosen in the NSOpenPanel
+      if let thePath: String = thePath,
+         let theContent: String = FileParser.content(filePath: thePath) { // make sure that a path was chosen and get the content of the file
          Swift.print("theContent: " + "\(theContent)") // print the content of the file
       }
    }
