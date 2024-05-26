@@ -3,8 +3,9 @@ import Foundation
 public final class FilePathAsserter {
     /**
      * Tests if a path is absolute or relative
-     * - Parameter path: The path to test
-     * - Parameter pathSeperator: The path separator to use (default is "/")
+     * - Parameters:
+     *   - path: The path to test
+     *   - pathSeperator: The path separator to use (default is "/")
      * - Returns: True if the path is absolute, false if it is relative
      */
     public static func isAbsolute(_ path: String, pathSeperator: String = "/") -> Bool {
@@ -20,8 +21,9 @@ public final class FilePathAsserter {
     }
     /**
      * Tests if a path is a file path (i.e. starts with a path separator or "../")
-     * - Parameter path: The path to test
-     * - Parameter pathSeperator: The path separator to use (default is "/")
+     * - Parameters:
+     *   - path: The path to test
+     *   - pathSeperator: The path separator to use (default is "/")
      * - Returns: True if the path is a file path, false otherwise
      */
     public static func isFilePath(_ path: String, pathSeperator: String = "/") -> Bool {

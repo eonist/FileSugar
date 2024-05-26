@@ -22,8 +22,9 @@ import Cocoa
 extension FilePathModifier {
    /**
     * Expands a file path to an absolute path
-    * - Parameter filePath: The file path to expand
-    * - Parameter baseURL: The base URL to use when expanding relative paths (default is "")
+    * - Parameters:
+    *   - filePath: The file path to expand
+    *   - baseURL: The base URL to use when expanding relative paths (default is "")
     * - Returns: The expanded absolute path, or nil if the path cannot be expanded
     * ## Examples:
     * Swift.print(expand("/Users/John/Desktop/temp"))///Users/John/Desktop/temp

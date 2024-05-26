@@ -8,7 +8,8 @@ final class FileSugarTests: XCTestCase {
       Self.testExample()
    }
    fileprivate static func testExample() {
-      // - Fixme: ⚠️️  write txt to temp folder, then assert
+      // - Fixme: ⚠️️ write txt to temp folder, then assert
+      // - Fixme: ⚠️️ add files to resource folder and test
       // let fileURL: URL? = ...
       // XCTAssertNotNil(fileURL)
       // XCTAssertFalse(FileManager().fileExists(atPath: fileURL!.path))
