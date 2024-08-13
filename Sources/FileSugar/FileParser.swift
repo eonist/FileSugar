@@ -7,6 +7,11 @@ import Foundation
 public final class FileParser {
    /**
     * Get data for URL
+    * - Description: Retrieves the raw data from the file located at the specified URL.
+    * ## Examples:
+    * let url = URL(fileURLWithPath: "~/Desktop/example.txt")
+    * let data = FileParser.data(url: url)
+    * Swift.print(data) // Output: Optional(<file data>)
     * - Parameter url: The URL of the file to get data from
     * - Returns: The data of the file at the specified URL, or nil if an error occurred
     */
@@ -20,6 +25,11 @@ public final class FileParser {
    }
    /**
     * Get data for file at a specific path
+    * - Description: Retrieves the raw data from the file located at the specified file path.
+    * ## Examples:
+    * let filePath = "~/Desktop/example.txt"
+    * let data = FileParser.data(filePath: filePath.tildePath)
+    * Swift.print(data) // Output: Optional(<file data>)
     * - Parameter filePath: The path of the file to get data from
     * - Returns: The data of the file at the specified path, or nil if an error occurred
     */
@@ -35,6 +45,7 @@ public final class FileParser {
    }
    /**
     * Returns string content from a file at file location "path"
+    * - Description: Retrieves the string content from the file located at the specified path.
     * - Important: ⚠️️ Remember to expand the path with the .tildePath call, if it's a tilde path
     * - Remark: Supports syntax like this: `/Users/John/Desktop/temp/../test.txt` (the temp folder is excluded in this case)
     * ## Examples:
@@ -59,6 +70,7 @@ public final class FileParser {
    }
    /**
     * Get the string content of a resource file in the main bundle
+    * - Description: Retrieves the string content from a resource file located within the app's main bundle.
     * ## Examples:
     * Swift.print(FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt"))
     * - Parameters:
@@ -74,6 +86,7 @@ public final class FileParser {
    }
    /**
     * Get the modification date of a file at a specific path
+    * - Description: Retrieves the modification date of the file at the specified path.
     * - Remark: Make sure the file exists with: `FileAsserter.exists("some path here")`
     * - Parameter filePath: The absolute path of the file to get the modification date of
     * ## Examples:
@@ -91,6 +104,7 @@ public final class FileParser {
    }
    /**
     * Returns paths of content in a directory
+    * - Description: Retrieves the paths of all files and directories within the specified directory.
     * - Note: This method returns the paths of all files and directories in the specified directory
     * - Remark: This is the root folder of the main hard drive on your computer
     * ## Examples:
@@ -111,14 +125,21 @@ public final class FileParser {
    }
    /**
     * Returns temporary directory path
+    * - Description: Retrieves the path to the system's temporary directory, which is used to store temporary files and data.
+    * ## Examples:
+    * let tempDirectoryPath = FileParser.tempPath
+    * Swift.print("Temporary directory path: \(tempDirectoryPath)")
     * - Returns: The path of the temporary directory
     */
    public static var tempPath: String {
       NSTemporaryDirectory() as String // get the path of the temporary directory
    }
-
    /**
     * Returns the current directory path
+    * - Description: Retrieves the path of the current working directory.
+    * ## Examples:
+    * let currentDirectoryPath = FileParser.curDir
+    * Swift.print("Current directory path: \(currentDirectoryPath)")
     * - Returns: The path of the current directory
     */
    public static var curDir: String {
@@ -134,6 +155,7 @@ import Cocoa
 extension FileParser {
    /**
     * Returns an xml instance comprised of the string content at location path
+    * - Description: Parses the XML content from the specified file path and returns the root XML element.
     * ## Examples:
     * xml("~/Desktop/assets/xml/table.xml".tildePath) // Output: XML instance
     * - Important: ⚠️️ Remember to expand the "path" with the tildePath call before you call xml(path)
@@ -152,6 +174,9 @@ extension FileParser {
    }
    /**
     * Example method that demonstrates how to use an NSOpenPanel to choose a file and get its content
+    * - Description: Demonstrates the use of NSOpenPanel to select a file and retrieve its content.
+    * ## Examples:
+    * FileParser.modalExample() // Opens a file dialog, user selects a file, prints its content
     * - Remark: This method is an example and should be modified to fit your specific use case
     */
    private static func modalExample() {

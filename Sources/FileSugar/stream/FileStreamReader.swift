@@ -1,10 +1,12 @@
 import Foundation
 /**
  * Reads data from a file (Continiously)
+ * - Description: Provides functionality to continuously read data from a file stream.
  */
 public final class FileStreamReader {
    /**
     * Reads data from a file at a given URL
+    * Reads data from a specified range in a file and returns it as Data.
     * ## Examples:
     * let url = URL(fileURLWithPath: "~/Desktop/del.txt")
     * let data = try FileStreamReader.read(url: url, startIndex: 50, endIndex: 100)
@@ -31,9 +33,11 @@ public final class FileStreamReader {
       }
    }
 }
+// getter
 extension FileStreamReader {
    /**
     * Returns the size of a file at a given path
+    * - Description: Retrieves the size of the file at the specified path in bytes.
     * ## Examples:
     * let filePath = "~/Desktop/del.txt"
     * let fileSize = try FileHelper.getFileSize(filePath: filePath)
@@ -63,10 +67,12 @@ extension FileStreamReader {
       }
    }
 }
+// reader
 extension FileStreamReader {
    /**
-   * Support for filePath
-   */
+    * Support for filePath
+    * - Description: Reads a segment of data from a file at a specified path, starting and ending at the given byte indices.
+    */
    public static func read(filePath: String, startIndex: UInt64, endIndex: Int) throws -> Data {
       // Create a URL from the file path
       let url: URL = .init(fileURLWithPath: filePath)
@@ -74,8 +80,9 @@ extension FileStreamReader {
       return try read(url: url, startIndex: startIndex, endIndex: endIndex)
    }
    /**
-   * Read string
-   */
+    * Read string
+    * - Description: Reads a segment of data from a file at a specified path, starting and ending at the given byte indices, and converts it to a string using UTF-8 encoding.
+    */
    internal static func read(filePath: String, start: UInt64, end: Int) throws -> String {
       // Read the data from the file at the given path
       let data: Data = try FileStreamReader.read(filePath: filePath, startIndex: start, endIndex: end)

@@ -3,6 +3,7 @@ import Foundation
 public final class FileAsserter {
    /**
     * Asserts if a file or folder exists
+    * - Description: Determines if the specified file or folder exists at the given path.
     * ## Examples:
     * FileAsserter.exists(path: NSString(string: "~/Desktop/del.txt").expandingTildeInPath) // true or false (remember to expand the tildePath)
     * - Parameter path: The path of the file or folder to check for existence
@@ -17,6 +18,7 @@ public final class FileAsserter {
 
    /**
     * Asserts if a directory has files
+    * - Description: Determines if the specified directory at the given path contains any files.
     * ## Examples:
     * FileAsserter.hasContent(filePath: NSString(string: "~/Desktop/").expandingTildeInPath)
     * - Parameter filePath: The path of the directory to check for files

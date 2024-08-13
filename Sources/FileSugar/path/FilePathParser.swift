@@ -1,10 +1,12 @@
 import Foundation
 /**
  * A utility class for working with file paths and URLs
+ * - Description: Provides methods for converting between string paths and URL objects, and for retrieving common directory paths.
  */
 public final class FilePathParser {
    /**
      * Returns the path to the app's documents directory
+     * - Description: Retrieves the path to the application's documents directory, which is used to store user documents and files.
      * - Returns: The path to the app's documents directory, or nil if it cannot be determined
      * ## Example:
      * let appDocPath = FilePathParser.appDocPath() // "/Users/James/Documents"
@@ -15,6 +17,7 @@ public final class FilePathParser {
     }
     /**
      * Parses a string path into a URL object
+     * - Description: Converts a string representation of a path into a URL object, which can be used to handle file paths more robustly in programming environments.
      * - Parameter stringPath: The string path to parse
      * - Returns: The URL object, or nil if the path cannot be parsed
      * ## Example:
@@ -25,6 +28,7 @@ public final class FilePathParser {
     }
     /**
      * Converts a URL object to a string path
+     * - Description: Converts a URL object into a string representation of the path. This method extracts the path component from the URL, which is useful for file operations that require a string path.
      * - Parameter url: The URL object to convert
      * - Returns: The string path, or an empty string if the URL cannot be converted
      * ## Example:
@@ -35,6 +39,7 @@ public final class FilePathParser {
     }
     /**
      * Converts a URL object to a string path
+     * - Description: Converts a URL object into its absolute string representation, including the scheme, host, and path. This method is useful for obtaining a full URL string from a URL object for display or storage purposes.
      * - Parameter path: The URL object to convert
      * - Returns: The string path, or an empty string if the URL cannot be converted
      * ## Example:
@@ -43,20 +48,20 @@ public final class FilePathParser {
     public static func stringPath(_ path: URL) -> String {
         path.absoluteString
     }
-   /**
+    /**
      * Returns the path to the user's home directory.
+     * - Description: Retrieves the path to the current user's home directory, which is the root directory for the user's files and settings.
      */
     public static func userHomePath() -> String {
         NSHomeDirectory() // Get the path to the user's home directory
     }
     /**
      * Returns the file name of the given URL.
-     *
+     * - Description: Retrieves the file name from the provided URL. This method can optionally include the file extension based on the `withExtension` parameter.
      * - Parameters:
      *   - fileURL: The URL of the file.
      *   - withExtension: Whether to include the file extension in the returned name. Defaults to `true`.
      * - Returns: The file name.
-     *
      * Example usage:
      * ```
      * let fileURL = URL(fileURLWithPath: "~/Desktop/temp.xml")
@@ -70,12 +75,11 @@ public final class FilePathParser {
     }
     /**
      * Returns the file name of the file at the given path.
-     *
+     * - Description: Retrieves the file name from the specified file path. This method checks if the file exists and returns the file name with or without the extension based on the `withExtension` parameter.
      * - Parameters:
      *   - filePath: The path of the file.
      *   - withExtension: Whether to include the file extension in the returned name. Defaults to `true`.
      * - Returns: The file name, or `nil` if the file does not exist.
-     *
      * Example usage:
      * ```
      * let fileName = FilePathParser.fileName(path: "~/Desktop/temp.xml")
@@ -87,10 +91,9 @@ public final class FilePathParser {
     }
     /**
      * Returns the directory of the given file URL.
-     *
+     * - Description: Retrieves the directory path of the provided file URL, excluding the file name and extension.
      * - Parameter fileURL: The URL of the file.
      * - Returns: The directory.
-     *
      * Example usage:
      * ```
      * let fileURL = URL(fileURLWithPath: "~/Desktop/temp.xml")
@@ -104,7 +107,7 @@ public final class FilePathParser {
     }
     /**
      * Returns the path to the project's resource folder.
-     *
+     * - Description: Retrieves the path to the resource directory of the main application bundle.
      * Example usage:
      * ```
      * let content = FileParser.content(FilePathParser.resourcePath() + "/temp.bundle/test.txt")
@@ -115,10 +118,9 @@ public final class FilePathParser {
     }
     /**
      * Returns the file extension of the file at the given path.
-     *
+     * - Description: Determines the file extension of the specified file path.
      * - Parameter filePath: The path of the file.
      * - Returns: The file extension.
-     *
      * Example usage:
      * ```
      * let fileExtension = FilePathParser.fileExtension("~/Desktop/temp.xml")
@@ -134,11 +136,10 @@ public final class FilePathParser {
 extension FilePathParser {
    /**
     * Returns the file name from a given file URL.
-    * 
+    * - Description: Extracts the file name from a given file URL. This method can optionally include the file extension based on the `withExtension` parameter.
     * - Parameters:
     *    - fileURL: The file URL to extract the file name from.
     *    - withExtension: Whether or not to include the file extension in the returned file name. Defaults to `true`.
-    * 
     * - Returns: The file name from the given file URL, or `nil` if the file URL is invalid.
     * Example usage:
     * let fileURL = "file:///Users/username/Documents/example.txt" let fileName = FilePathParser.fileName(fileURL: fileURL) // fileName == "example.txt"

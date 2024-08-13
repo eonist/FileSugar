@@ -3,7 +3,10 @@ import Foundation
 public final class FileModifier {
    /**
     * Moves a file from one location to another
+    * - Description: Moves a file from its current location to a new location specified by the user.
     * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * ## Examples:
+    * FileModifier.move("~/Desktop/old.txt".tildePath, "~/Desktop/newFolder/old.txt".tildePath) // returns true if the file was successfully moved
     * - Parameters:
     *    - fromURL: The path of the file to move
     *    - toURL: The path of the destination for the file
@@ -23,7 +26,10 @@ public final class FileModifier {
    }
    /**
     * Copies a file to another location
+    * - Description: Copies a file from its current location to a new location specified by the user.
     * - Remark: Paths must be created with: URL(fileURLWithPath: directory) and then .path
+    * ## Examples:
+    * FileModifier.copy("~/Desktop/old.txt".tildePath, "~/Desktop/newFolder/old.txt".tildePath) // returns true if the file was successfully copied
     * - Parameters:
     *   - fromURL: The path of the file to copy
     *   - toURL: The path of the destination for the copied file
@@ -42,9 +48,9 @@ public final class FileModifier {
          return false // return false if the file copy operation failed
       }
    }
-
    /**
     * Writes a string to a file
+    * - Description: Writes the provided string content to the file at the specified path. If the file does not exist, it is created. If the file exists, its contents are overwritten.
     * - Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, "test") // returns true or false depending on if something was written or not
     * - Remark: This method overwrites data to files that already exist as well
@@ -65,6 +71,7 @@ public final class FileModifier {
    }
    /**
     * Write data to path
+    * - Description: Writes the provided data to the file at the specified path. If the file does not exist, it is created. This method is useful for writing raw data like binary content.
     * ## Examples:
     * FileModifier.write("~/Desktop/del.txt".tildePath, data) // returns true or false depending on if something was written or not
     * Fixme: this should throw?
@@ -84,6 +91,7 @@ public final class FileModifier {
    }
    /**
     * Create a directory at a path
+    * - Description: Creates a directory at the specified path. If any intermediate directories do not exist, they will be created as well.
     * - Remark: Also creates entire structures of folders say if non of the folders in path desktop/temp/tmp/blabla already exists, then all 3 folders will be created
     * ## Examples:
     * FileModifier.createDir("~/Desktop/temp/".tildePath) // returns true or false depending on if something was created or not
@@ -101,6 +109,9 @@ public final class FileModifier {
    }
    /**
     * Deletes a file at a specific path
+    * - Description: Deletes the file at the specified path. This operation is irreversible.
+    * Example:
+    * FileModifier.delete("~/Desktop/old_file.txt".tildePath) // returns true if the file was successfully deleted
     * - Parameter path: The path of the file to delete
     * - Returns: A boolean value indicating whether the file was successfully deleted
     */
@@ -117,6 +128,9 @@ public final class FileModifier {
    }
    /**
     * Renames a file
+    * - Description: Renames the file at the specified path to a new path. This operation changes the file's location and/or its name within the filesystem.
+    * Example:
+    * FileModifier.rename("~/Desktop/old_name.txt".tildePath, "~/Desktop/new_name.txt".tildePath) // returns true if the file was successfully renamed
     * - Parameters:
     *   - fromURL: The path of the file to rename
     *   - toURL: The new path for the renamed file
@@ -134,6 +148,9 @@ public final class FileModifier {
    }
    /**
     * Creates a folder at a specific path
+    * - Description: Creates a folder at the specified path. This operation includes the creation of intermediate directories if they do not exist.
+    * Example:
+    * FileModifier.createFolder("~/Desktop/new_folder".tildePath) // returns true if the folder was successfully created
     * - Parameter path: The path of the folder to create
     * - Returns: A boolean value indicating whether the folder was successfully created
     */
@@ -149,6 +166,9 @@ public final class FileModifier {
    }
    /**
     * Append text to end of file
+    * - Description: Appends the specified text to the end of the file at the given path.
+    * Example:
+    * FileModifier.append("~/Desktop/log.txt".tildePath, "New log entry") // returns true if the text was successfully appended
     * - Parameters:
     *   - path: The path of the file to append to
     *   - text: The text to append to the file
@@ -160,6 +180,9 @@ public final class FileModifier {
 
    /**
     * Append text to file at index
+    * - Description: Appends the specified text to the file at the given path and index. If the index is beyond the current file length, the text will be appended at the end.
+    * Example:
+    * FileModifier.append("~/Desktop/log.txt".tildePath, "New log entry", index: 10) // returns true if the text was successfully appended at the specified index
     * - Parameters:
     *   - path: The path of the file to append to
     *   - text: The text to append to the file

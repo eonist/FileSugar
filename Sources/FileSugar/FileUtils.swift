@@ -6,6 +6,7 @@ import Cocoa
 class FileUtils {
    /**
     * Shows where a file is in a finder window
+    * - Description: Opens the Finder at the specified file path, allowing the user to view the location of the file or folder in the macOS Finder.
     * ## Examples:
     * showFileInFinder("~/dev/Element") -> shows the file or folder in finder
     * - Parameter filePath: The path of the file or folder to show in Finder

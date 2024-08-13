@@ -1,10 +1,12 @@
 import Foundation
 /**
  * A utility class for writing data to a file at a given path (Continiously)
+ * - Description: Provides functionality to continuously write data to a file stream.
  */
 public final class FileStreamWriter {
    /**
     * Writes data to a file at a given URL
+    * - Description: Writes the provided data to the file at the specified URL starting at the given byte offset.
     * ## Examples:
     * let url = URL(fileURLWithPath: "~/Desktop/del.txt")
     * let data = "Hello, world!".data(using: .utf8)!
@@ -50,6 +52,7 @@ public final class FileStreamWriter {
    }
    /**
     * Truncates a file at a given path
+    * - Description: Truncates the file at the specified path to zero length, effectively clearing all its contents.
     * ## Examples:
     * let filePath = "~/Desktop/del.txt"
     * try FileStreamWriter.truncateFile(filePath: filePath)
@@ -79,6 +82,7 @@ public final class FileStreamWriter {
 extension FileStreamWriter {
    /**
     * Writes data to a file at a given path
+    * - Description: Writes the provided data to the file at the specified path starting from the given byte offset.
     * - Fixme: ⚠️️ Use Result type
     * - Parameters:
     *   - filePath: The path of the file to write to
