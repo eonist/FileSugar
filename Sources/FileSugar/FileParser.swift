@@ -79,8 +79,8 @@ public final class FileParser {
     * - Returns: The string content of the resource file, or nil if the file was not found or an error occurred
     */
    public static func resourceContent(_ fileName: String, fileExtension: String) -> String? {
-      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else { 
-         return nil 
+      guard let filepath: String = Bundle.main.path(forResource: fileName, ofType: fileExtension) else {
+         return nil
       } // get the file path of the resource file with the specified name and extension in the main bundle
       return content(filePath: filepath) // return the string content of the resource file
    }
@@ -96,8 +96,8 @@ public final class FileParser {
     */
    public static func modificationDate(_ filePath: String) -> NSDate? {
       let fileURL: NSURL = .init(fileURLWithPath: filePath) // create a file URL from the specified file path
-      guard let attributes: [URLResourceKey: Any] = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else { 
-         return nil 
+      guard let attributes: [URLResourceKey: Any] = try? fileURL.resourceValues(forKeys: [URLResourceKey.contentModificationDateKey, URLResourceKey.nameKey]) else {
+         return nil
       } // get the resource values for the file URL, including the modification date
       guard let modificationDate: NSDate = attributes[URLResourceKey.contentModificationDateKey] as? NSDate else { return nil } // get the modification date from the resource values
       return modificationDate // return the modification date of the file

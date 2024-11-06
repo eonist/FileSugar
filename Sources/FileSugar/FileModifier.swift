@@ -13,7 +13,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully moved
     */
    @discardableResult public static func move(_ fromURL: String, toURL: String) -> Bool {
-      let fileManager: FileManager = FileManager.default // create a file manager instance
+      let fileManager = FileManager.default // create a file manager instance
       let fromURL: URL = .init(fileURLWithPath: fromURL) // create a URL from the source file path
       let toURL: URL = .init(fileURLWithPath: toURL) // create a URL from the destination file path
       do {
@@ -36,7 +36,7 @@ public final class FileModifier {
     * - Returns: A boolean value indicating whether the file was successfully copied
     */
    @discardableResult public static func copy(_ fromURL: String, toURL: String) -> Bool {
-      let fileManager: FileManager = FileManager.default // create a file manager instance
+      let fileManager = FileManager.default // create a file manager instance
       let fromURL: URL = .init(fileURLWithPath: fromURL) // create a URL from the source file path
       let toURL: URL = .init(fileURLWithPath: toURL) // create a URL from the destination file path
       do {

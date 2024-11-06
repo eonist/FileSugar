@@ -48,12 +48,12 @@ extension FileStreamReader {
     */
    public static func getFileSize(filePath: String) throws -> UInt64 {
       // Create a URL from the file path
-      let fileUrl: URL = URL(fileURLWithPath: filePath)
+      let fileUrl = URL(fileURLWithPath: filePath)
       // Get the default file manager
-      let fileManager: FileManager = FileManager.default
+      let fileManager = FileManager.default
       do {
          // Get the attributes of the file at the URL
-         let attributes: [FileAttributeKey : Any] = try fileManager.attributesOfItem(atPath: (fileUrl.path))
+         let attributes: [FileAttributeKey: Any] = try fileManager.attributesOfItem(atPath: (fileUrl.path))
          // Get the file size from the attributes dictionary
          var fileSize: UInt64 = attributes[FileAttributeKey.size] as! UInt64
          // Alternatively, get the file size from the attributes dictionary using the fileSize() method
