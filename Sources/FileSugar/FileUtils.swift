@@ -2,6 +2,7 @@
 import Cocoa
 /**
  * A utility class for working with files on macOS
+ * - Fixme: ⚠️️ make this final?
  */
 class FileUtils {
    /**
