@@ -4,6 +4,7 @@ import PackageDescription
 // Define the package with a name and a list of products and dependencies
 let package = Package(
     name: "FileSugar", // The name of the package
+    platforms: [.iOS(.v17), .macOS(.v14)], // Platforms the package supports
     products: [
         .library( // Define a library product
             name: "FileSugar", // The name of the library product
