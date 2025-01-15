@@ -238,11 +238,39 @@ extension FileModifier {
             }
         }
     }
-   // fixme: add doc
+   /**
+    * Appends text to a file asynchronously at a specified index.
+    * - Description: Opens a file at the given path and appends the provided text starting from the specified index. If the index is negative, the text is appended at the end of the file.
+    * - Parameters:
+    *   - path: The path to the file where the text will be appended.
+    *   - text: The text content to append to the file.
+    *   - index: The position in the file where the text will be appended. If negative, the text is appended to the end.
+    * - Returns: A boolean indicating whether the append operation was successful.
+    * - Throws: An error if the file cannot be opened or written to.
+    */
    public static func appendAsync(_ path: String, text: String, index: Int) async throws -> Bool {
-      let fileURL = URL(fileURLWithPath: path)
-      let data = text.data(using: .utf8)!
-      try await data.write(to: fileURL, options: [.atomic])
-      return true
+       let fileURL = URL(fileURLWithPath: path)
+       guard let data = text.data(using: .utf8) else {
+           throw NSError(domain: "Invalid Encoding", code: -1, userInfo: nil)
+       }
+       return try await withCheckedThrowingContinuation { continuation in
+           DispatchQueue.global().async {
+               do {
+                   let fileHandle = try FileHandle(forWritingTo: fileURL)
+                   defer {
+                       try? fileHandle.close()
+                   }
+                   if index >= 0 {
+                       try fileHandle.seek(toOffset: UInt64(index))
+                   } else {
+                       try fileHandle.seekToEnd()
+                   }
+                   try fileHandle.write(contentsOf: data)
+                   continuation.resume(returning: true)
+               } catch {
+                   continuation.resume(throwing: error)
+               }
+           }
+       }
    }
 }

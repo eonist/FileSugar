@@ -24,7 +24,13 @@ final class FileSugarTests: XCTestCase {
       try? FileManager.default.removeItem(at: fileURL)
    }
    // If you need to support earlier versions of Swift or prefer not to use async test methods, you can use expectations:
-   // fixme: add doc
+   /**
+    * Tests reading file content asynchronously using expectations (compatible with older Swift versions).
+    *
+    * This test writes a test string to a temporary file, then reads it back asynchronously
+    * using `FileParser.readContentAsync(url:)`. It uses an expectation to wait for the asynchronous
+    * operation to complete.
+    */
    func testFileParserAsyncContentOlderSwift() throws {
       let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.txt")
       let testContent = "Hello, World!"
@@ -48,7 +54,12 @@ final class FileSugarTests: XCTestCase {
       // Clean up
       try? FileManager.default.removeItem(at: fileURL)
    }
-   // fixme: add doc
+   /**
+    * Tests writing content to a file asynchronously using `FileModifier.writeContentAsync(url:content:)`.
+    *
+    * This test writes a test string to a temporary file asynchronously, then reads it back asynchronously
+    * to verify that the content matches.
+    */
    func testWriteContentAsync() async throws {
       let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.txt")
       let testContent = "Hello, World!"
@@ -56,7 +67,12 @@ final class FileSugarTests: XCTestCase {
       let content = try await FileParser.readContentAsync(url: fileURL)
       XCTAssertEqual(content, testContent, "Content should match the test content")
    }
-   // fixme: add doc
+   /**
+    * Tests writing data to a file asynchronously using `FileModifier.writeDataAsync(url:data:)`.
+    *
+    * This test writes test data to a temporary file asynchronously, then reads it back asynchronously
+    * to verify that the data matches.
+    */
    func testWriteDataAsync() async throws {
       let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("temp.txt")
       let testData = "Hello, World!".data(using: .utf8)!

@@ -5,7 +5,10 @@ final class FileModifierTests: XCTestCase {
     // fixme add doc
     func testWriteFile() {
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test.txt")
-        let data = "Hello, Swift!".data(using: .utf8)!
+        guard let data = "Hello, Swift!".data(using: .utf8) else {
+            XCTFail("Failed to encode string to data")
+            return
+        }
         do {
             try data.write(to: fileURL, options: [.atomic])
             XCTAssertTrue(FileManager.default.fileExists(atPath: fileURL.path))

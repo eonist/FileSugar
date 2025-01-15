@@ -163,7 +163,10 @@ extension FileParser {
     * - Returns: An XMLElement instance representing the root element of the XML content at the specified path, or nil if an error occurred
     */
    public static func xml(_ path: String) -> XMLElement? {
-      guard let content: String = FileParser.content(filePath: path) else { fatalError("Must have content: path: \(path)") } // get the string content of the file at the specified path
+      guard let content: String = FileParser.content(filePath: path) else {
+         Swift.print("⚠️️ FileParser.xml Error: Content is nil at path: \(path)") // get the string content of the file at the specified path
+         return nil
+      }
       do {
          let xmlDoc: XMLDocument = try XMLDocument(xmlString: content, options: XMLNode.Options(rawValue: 0)) // create an XML document instance from the string content
          return xmlDoc.rootElement() // return the root element of the XML document
@@ -199,20 +202,22 @@ extension FileParser {
      * - Throws: An error if the file could not be read.
      */
     public static func readContentAsync(url: URL) async throws -> String {
-      return try await withCheckedThrowingContinuation { continuation in
-          DispatchQueue.global().async {
-              do {
-                  let data = try Data(contentsOf: url)
-                  if let content = String(data: data, encoding: .utf8) {
-                      continuation.resume(returning: content)
-                  } else {
-                      continuation.resume(throwing: NSError(domain: "Invalid Encoding", code: -1, userInfo: nil))
-                  }
-              } catch {
-                  continuation.resume(throwing: error)
-              }
-          }
-      }
+       // ⚠️️ this might be the outdated way of doing async 
+       return try await withCheckedThrowingContinuation { continuation in
+           DispatchQueue.global().async {
+               do {
+                   let data = try Data(contentsOf: url)
+                   if let content = String(data: data, encoding: .utf8) {
+                       continuation.resume(returning: content)
+                   } else {
+                       continuation.resume(throwing: NSError(domain: "Invalid Encoding", code: -1, userInfo: nil))
+                   }
+               } catch {
+                   continuation.resume(throwing: error)
+               }
+           }
+       }
+       // fixme: ⚠️️ the bellow might only work for swift 6? try using if swift 6.0 etc?
         //try await String(contentsOf: url, encoding: .utf8) // not working
     }
     /**

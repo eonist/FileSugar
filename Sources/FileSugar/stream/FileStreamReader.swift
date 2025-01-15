@@ -22,7 +22,8 @@ public final class FileStreamReader {
    public static func read(url: URL, startIndex: UInt64, endIndex: Int) throws -> Data {
       do {
          let file: FileHandle = try .init(forReadingFrom: url) // Open the file at the given URL for reading
-         file.seek(toFileOffset: startIndex) // Seek to the starting byte offset
+        // file.seek(toFileOffset: startIndex) // Seek to the starting byte offset
+         try file.seek(toOffset: startIndex)
          let length: Int = endIndex - Int(startIndex) // Calculate the length of the data to read
          let databuffer: Data = file.readData(ofLength: length) // Read the data from the file
          file.closeFile() // Close the file
@@ -46,26 +47,33 @@ extension FileStreamReader {
     * - Throws: An error if the file size cannot be determined
     * - Returns: The size of the file in bytes
     */
-   public static func getFileSize(filePath: String) throws -> UInt64 {
-      // Create a URL from the file path
-      let fileUrl = URL(fileURLWithPath: filePath)
-      // Get the default file manager
-      let fileManager = FileManager.default
-      do {
-         // Get the attributes of the file at the URL
-         let attributes: [FileAttributeKey: Any] = try fileManager.attributesOfItem(atPath: (fileUrl.path))
-         // Get the file size from the attributes dictionary
-         var fileSize: UInt64 = attributes[FileAttributeKey.size] as! UInt64
-         // Alternatively, get the file size from the attributes dictionary using the fileSize() method
-         let dict: NSDictionary = attributes as NSDictionary
-         fileSize = dict.fileSize()
-         // Return the file size
-         return fileSize
-      } catch let error as NSError {
-         // If an error occurs, throw an NSError with a descriptive message
-         throw NSError(domain: ("⚠️️ Something went wrong: \(error)"), code: 0)
+public static func getFileSize(filePath: String) throws -> UInt64 {
+   // Create a URL from the file path
+   let fileUrl = URL(fileURLWithPath: filePath)
+   // Get the default file manager
+   let fileManager = FileManager.default
+   do {
+      // Get the attributes of the file at the URL
+      let attributes: [FileAttributeKey: Any] = try fileManager.attributesOfItem(atPath: fileUrl.path)
+      // Get the file size from the attributes dictionary
+      var fileSize: UInt64
+      if let sizeValue = attributes[FileAttributeKey.size] as? UInt64 {
+          fileSize = sizeValue
+      } else if let sizeNumber = attributes[FileAttributeKey.size] as? NSNumber {
+          fileSize = sizeNumber.uint64Value
+      } else if let dict = attributes as NSDictionary? {
+          // Alternatively, get the file size from the attributes dictionary using the fileSize() method
+          fileSize = dict.fileSize()
+      } else {
+          throw NSError(domain: "Unable to retrieve file size", code: 0)
       }
+      // Return the file size
+      return fileSize
+   } catch let error as NSError {
+      // If an error occurs, throw an NSError with a descriptive message
+      throw NSError(domain: "⚠️️ Something went wrong: \(error)", code: 0)
    }
+}
 }
 // reader
 extension FileStreamReader {

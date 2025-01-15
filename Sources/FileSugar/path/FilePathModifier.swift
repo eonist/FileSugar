@@ -38,6 +38,8 @@ extension FilePathModifier {
     * Swift.print(expand("/temp/colors/star.svg",baseURL:"/Users/John/Desktop"))///Users/John/Desktop/temp/colors/star.svg
     * Swift.print(expand("star.svg",baseURL:"/Users/John/Desktop"))///Users/John/Desktop/star.svg
     * - Important: ⚠️️ Tilde paths can't have backlash syntax like ../../ etc
+    * fixme: add: let path = NSString(string: filePath).expandingTildeInPath
+    * fixme: add: let base = NSString(string: baseURL).expandingTildeInPath
     */
    public static func expand(_ filePath: String, baseURL: String = "") -> String? {
       switch true {
