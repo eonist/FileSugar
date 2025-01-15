@@ -190,3 +190,48 @@ extension FileParser {
    }
 }
 #endif
+// async
+extension FileParser {
+    /**
+     * Reads the content of a file asynchronously.
+     * - Parameter url: The URL of the file to read.
+     * - Returns: The content of the file as a `String`.
+     * - Throws: An error if the file could not be read.
+     */
+    public static func readContentAsync(url: URL) async throws -> String {
+      return try await withCheckedThrowingContinuation { continuation in
+          DispatchQueue.global().async {
+              do {
+                  let data = try Data(contentsOf: url)
+                  if let content = String(data: data, encoding: .utf8) {
+                      continuation.resume(returning: content)
+                  } else {
+                      continuation.resume(throwing: NSError(domain: "Invalid Encoding", code: -1, userInfo: nil))
+                  }
+              } catch {
+                  continuation.resume(throwing: error)
+              }
+          }
+      }
+        //try await String(contentsOf: url, encoding: .utf8) // not working
+    }
+    /**
+     * Reads the data of a file asynchronously.
+     * - Parameter url: The URL of the file to read.
+     * - Returns: The data of the file as a `Data`.
+     * - Throws: An error if the file could not be read.
+     */
+    public static func readDataAsync(url: URL) async throws -> Data {
+      //try await Data(contentsOf: url) //  not working
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    let data = try Data(contentsOf: url)
+                    continuation.resume(returning: data)
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+}

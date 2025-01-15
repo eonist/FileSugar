@@ -4,7 +4,7 @@
 [![codebeat badge](https://codebeat.co/badges/b4b79239-d1f9-4c9a-8c46-d6a1b9dcb559)](https://codebeat.co/projects/github-com-eonist-filesugar-master)
 
 ### Description
-FileSugar is a Swift package that provides a simple API for working with files. It allows you to easily open, save, delete, and create files.
+FileSugar is a lightweight Swift package that provides an elegant API for file system operations in iOS and macOS. It simplifies common tasks like reading, writing, and managing files while maintaining type-safety and performance.
 
 ## Table of Contents
 - [Description](#description)

@@ -69,6 +69,7 @@ public final class FileModifier {
          return false // return false if the write operation failed
       }
    }
+   
    /**
     * Write data to path
     * - Description: Writes the provided data to the file at the specified path. If the file does not exist, it is created. This method is useful for writing raw data like binary content.
@@ -80,7 +81,7 @@ public final class FileModifier {
     *   - data: The data to write to the file
     * - Returns: A boolean value indicating whether the data was successfully written to the file
     */
-   @discardableResult public static func write(path: String, data: Data) -> Bool {
+   @discardableResult public static func write(path: String, data: Data) throws -> Bool {
       do {
          try data.write(to: URL(fileURLWithPath: path), options: [.atomic]) // write the data to the file at the specified path
          return true // return true if the data was successfully written to the file
@@ -195,5 +196,53 @@ public final class FileModifier {
       os.write(text, maxLength: index) // write the text to the output stream at the specified index
       os.close() // close the output stream
       return true // return true if the text was successfully appended to the file
+   }
+}
+// async
+extension FileModifier {
+    /**
+     * Writes the given content to a file asynchronously.
+     * - Parameters:
+     *   - url: The URL of the file to write to.
+     *   - content: The string content to write to the file.
+     * - Throws: An error if the content could not be written.
+     */
+    public static func writeContentAsync(url: URL, content: String) async throws {
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    try content.write(to: url, atomically: true, encoding: .utf8)
+                    continuation.resume()
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+    /**
+     * Writes the given data to a file asynchronously.
+     * - Parameters:
+     *   - url: The URL of the file to write to.
+     *   - data: The data to write to the file.
+     * - Throws: An error if the data could not be written.
+     */
+    public static func writeDataAsync(url: URL, data: Data) async throws {
+        try await withCheckedThrowingContinuation { continuation in
+            DispatchQueue.global().async {
+                do {
+                    try data.write(to: url, options: .atomic)
+                    continuation.resume()
+                } catch {
+                    continuation.resume(throwing: error)
+                }
+            }
+        }
+    }
+   // fixme: add doc
+   public static func appendAsync(_ path: String, text: String, index: Int) async throws -> Bool {
+      let fileURL = URL(fileURLWithPath: path)
+      let data = text.data(using: .utf8)!
+      try await data.write(to: fileURL, options: [.atomic])
+      return true
    }
 }
