@@ -182,6 +182,7 @@ public final class FileModifier {
    /**
     * Append text to file at index
     * - Description: Appends the specified text to the file at the given path and index. If the index is beyond the current file length, the text will be appended at the end.
+    * fixme: I think this works a little different. i dont think maxLength is index etc. try to figure it out and make tests etc
     * Example:
     * FileModifier.append("~/Desktop/log.txt".tildePath, "New log entry", index: 10) // returns true if the text was successfully appended at the specified index
     * - Parameters:
@@ -196,6 +197,27 @@ public final class FileModifier {
       os.write(text, maxLength: index) // write the text to the output stream at the specified index
       os.close() // close the output stream
       return true // return true if the text was successfully appended to the file
+      // ⚠️️ could be done with the bellow, but might be overkill. 
+      // guard let fileHandle = FileHandle(forUpdatingAtPath: path) else { return false } // Open the file for updating
+      // defer {
+      //    fileHandle.closeFile() // Ensure the file is closed when done
+      // }
+      // do {
+      //    let fileSize = try FileManager.default.attributesOfItem(atPath: path)[.size] as! UInt64 // Get the file size
+      //    let writeIndex = min(UInt64(index), fileSize) // Determine the correct index to write at
+      //    try fileHandle.seek(toOffset: writeIndex) // Move to the specified index
+      //    let remainingData = fileHandle.readDataToEndOfFile() // Read the remaining data
+      //    try fileHandle.seek(toOffset: writeIndex) // Move back to the write index
+      //    if let textData = text.data(using: .utf8) {
+      //       fileHandle.write(textData) // Write the new text
+      //       fileHandle.write(remainingData) // Write the remaining data back
+      //       return true // Return true if the text was successfully appended
+      //    }
+      //    return false // Return false if text encoding failed
+      // } catch {
+      //    print("Error appending text at index: \(error)") // Print an error message if the operation failed
+      //    return false // Return false if an error occurred
+      // }
    }
 }
 // async

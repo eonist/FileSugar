@@ -18,6 +18,24 @@ let package = Package(
             dependencies: []), // The dependencies of the target
         .testTarget( // Define a test target
             name: "FileSugarTests", // The name of the test target
-            dependencies: ["FileSugar"]) // The dependencies of the test target
+            dependencies: ["FileSugar"] // The dependencies of the test target
+        ),
+        .testTarget( // Define a test target
+            name: "FileModifierTests", // The name of the test target
+            dependencies: ["FileSugar"] // The dependencies of the test target
+        ),
+        .testTarget( // Define a test target
+            name: "FileStreamTests", // The name of the test target
+            dependencies: ["FileSugar"] // The dependencies of the test target
+         ),
+        .testTarget(
+            name: "FileParserTests",
+            dependencies: ["FileSugar"],
+            // sources: ["FileParserTests.swift"],
+            resources: [
+                .copy("Resources/TestResource.txt")
+            ]
+        )
+
     ]
 )

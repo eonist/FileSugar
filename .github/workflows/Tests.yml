@@ -5,6 +5,8 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight UTC
 
 jobs:
   build:
@@ -13,6 +15,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Sleep Randomly
+      run: |
+        sleep_time=$(( RANDOM % 21600 ))  # Sleep up to 6 hours
+        echo "Sleeping for $sleep_time seconds"
+        sleep $sleep_time
     - name: Build
       run: swift build -v
     - name: Run tests

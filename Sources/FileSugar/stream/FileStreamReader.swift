@@ -20,11 +20,20 @@ public final class FileStreamReader {
     * Fixme: ⚠️️ Use Result type
     */
    public static func read(url: URL, startIndex: UInt64, endIndex: Int) throws -> Data {
+      guard endIndex >= 0 else {
+          throw NSError(domain: "Invalid endIndex: \(endIndex) is negative", code: 0)
+      }
+      guard UInt64(endIndex) >= startIndex else {
+          throw NSError(domain: "Invalid range: endIndex (\(endIndex)) is less than startIndex (\(startIndex))", code: 0)
+      }
+      let length64 = UInt64(endIndex) - startIndex
+      guard length64 <= UInt64(Int.max) else {
+          throw NSError(domain: "Requested read length (\(length64)) exceeds maximum allowed size", code: 0)
+      }
+      let length = Int(length64)
       do {
          let file: FileHandle = try .init(forReadingFrom: url) // Open the file at the given URL for reading
-        // file.seek(toFileOffset: startIndex) // Seek to the starting byte offset
-         try file.seek(toOffset: startIndex)
-         let length: Int = endIndex - Int(startIndex) // Calculate the length of the data to read
+         try file.seek(toOffset: startIndex) // Seek to the starting byte offset
          let databuffer: Data = file.readData(ofLength: length) // Read the data from the file
          file.closeFile() // Close the file
          return databuffer // Return the data read from the file

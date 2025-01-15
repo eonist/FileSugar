@@ -39,7 +39,8 @@ public final class FileStreamWriter {
          // Open the file at the given URL for updating
          let file: FileHandle = try .init(forUpdating: url)
          // Seek to the specified byte offset
-         file.seek(toFileOffset: index)
+         //file.seek(toFileOffset: index)
+         try file.seek(toOffset: index)
          // Write the data to the file
          file.write(data)
          // Close the file
