@@ -2,7 +2,7 @@ import XCTest
 @testable import FileSugar
 
 final class FileModifierTests: XCTestCase {
-    // fixme add doc
+    /// Tests writing data to a temporary file and verifies the file's existence and content.
     func testWriteFile() {
         let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("test.txt")
         guard let data = "Hello, Swift!".data(using: .utf8) else {
